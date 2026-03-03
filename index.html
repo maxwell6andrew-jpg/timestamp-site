@@ -1,0 +1,140 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TimeStamp! | Guess the Date</title>
+  <meta name="description" content="TimeStamp! is a social photo date-guessing game. Play daily challenges, practice rounds, and group sessions." />
+  <style>
+    :root {
+      --bg1: #0b1020;
+      --bg2: #1a2340;
+      --card: rgba(255,255,255,0.08);
+      --text: #f5f7ff;
+      --muted: #c7d0f4;
+      --accent1: #ff7f50;
+      --accent2: #31c3ff;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      color: var(--text);
+      background: radial-gradient(1200px 700px at 20% -10%, #2a3b70 0%, transparent 50%),
+                  linear-gradient(140deg, var(--bg1), var(--bg2));
+      min-height: 100vh;
+    }
+    .wrap {
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 32px 20px 60px;
+    }
+    .nav {
+      display: flex;
+      gap: 18px;
+      justify-content: flex-end;
+      font-size: 0.95rem;
+      margin-bottom: 24px;
+    }
+    .nav a { color: var(--muted); text-decoration: none; }
+    .nav a:hover { color: white; }
+    .hero {
+      background: var(--card);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 20px;
+      padding: 28px;
+      backdrop-filter: blur(4px);
+    }
+    h1 {
+      margin: 0 0 10px;
+      font-size: clamp(2rem, 4vw, 3rem);
+      line-height: 1.1;
+    }
+    .sub { color: var(--muted); font-size: 1.1rem; margin: 0 0 18px; }
+    .badges { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 6px; }
+    .badge {
+      background: rgba(255,255,255,0.10);
+      border: 1px solid rgba(255,255,255,0.15);
+      border-radius: 999px;
+      padding: 8px 12px;
+      font-size: 0.9rem;
+      color: #eaf0ff;
+    }
+    .sections {
+      display: grid;
+      grid-template-columns: repeat(auto-fit,minmax(240px,1fr));
+      gap: 14px;
+      margin-top: 16px;
+    }
+    .card {
+      background: var(--card);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 16px;
+      padding: 16px;
+    }
+    h2 { margin: 0 0 8px; font-size: 1.1rem; }
+    p { margin: 0; color: var(--muted); line-height: 1.5; }
+    .cta {
+      margin-top: 22px;
+      display: inline-block;
+      text-decoration: none;
+      color: #111;
+      font-weight: 700;
+      padding: 12px 18px;
+      border-radius: 12px;
+      background: linear-gradient(90deg, var(--accent1), var(--accent2));
+    }
+    footer {
+      margin-top: 28px;
+      color: #adbadf;
+      font-size: 0.9rem;
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <nav class="nav">
+      <a href="/timestamp-site/">Home</a>
+      <a href="/timestamp-site/support.html">Support</a>
+      <a href="/timestamp-site/privacy.html">Privacy</a>
+    </nav>
+
+    <section class="hero">
+      <h1>TimeStamp!</h1>
+      <p class="sub">Guess when your photos were taken. Challenge your memory in daily, practice, and group modes.</p>
+      <div class="badges">
+        <span class="badge">Daily Challenge</span>
+        <span class="badge">Leaderboard</span>
+        <span class="badge">Practice Mode</span>
+        <span class="badge">Group Sessions</span>
+      </div>
+
+      <div class="sections">
+        <article class="card">
+          <h2>How It Works</h2>
+          <p>Pick from your photo moments and guess the year, month, and day. Score points for each correct stage.</p>
+        </article>
+        <article class="card">
+          <h2>Compete</h2>
+          <p>Play the daily challenge and compare results with other players through leaderboard integration.</p>
+        </article>
+        <article class="card">
+          <h2>Play With Friends</h2>
+          <p>Start group sessions and turn your memories into social rounds with fast replays.</p>
+        </article>
+      </div>
+
+      <a class="cta" href="#" aria-label="Download on the App Store (coming soon)">Download on the App Store (Coming Soon)</a>
+    </section>
+
+    <footer>
+      © <span id="year"></span> Maxwell Games. All rights reserved.
+    </footer>
+  </div>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
