@@ -1,20 +1,20 @@
-<!-- index.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>TimeStamp! | Guess the Date</title>
-  <meta name="description" content="TimeStamp! is a social photo date-guessing game. Play daily challenges, practice rounds, and group sessions." />
+  <title>TimeStamp! | Maxwell Games</title>
+  <meta name="description" content="TimeStamp! is a social photo date-guessing game with daily challenges, practice mode, and group play." />
   <style>
     :root {
       --bg1: #0b1020;
       --bg2: #1a2340;
-      --card: rgba(255,255,255,0.08);
+      --card: rgba(255, 255, 255, 0.08);
       --text: #f5f7ff;
       --muted: #c7d0f4;
       --accent1: #ff7f50;
       --accent2: #31c3ff;
+      --line: rgba(255, 255, 255, 0.15);
     }
     * { box-sizing: border-box; }
     body {
@@ -26,67 +26,81 @@
       min-height: 100vh;
     }
     .wrap {
-      max-width: 980px;
+      max-width: 1040px;
       margin: 0 auto;
-      padding: 32px 20px 60px;
+      padding: 28px 20px 58px;
+    }
+    .topbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 22px;
+      gap: 16px;
+    }
+    .brand {
+      font-weight: 800;
+      letter-spacing: 0.3px;
     }
     .nav {
       display: flex;
-      gap: 18px;
-      justify-content: flex-end;
+      flex-wrap: wrap;
+      gap: 14px;
       font-size: 0.95rem;
-      margin-bottom: 24px;
     }
     .nav a { color: var(--muted); text-decoration: none; }
     .nav a:hover { color: white; }
     .hero {
       background: var(--card);
-      border: 1px solid rgba(255,255,255,0.12);
-      border-radius: 20px;
+      border: 1px solid var(--line);
+      border-radius: 18px;
       padding: 28px;
-      backdrop-filter: blur(4px);
+      backdrop-filter: blur(3px);
     }
     h1 {
       margin: 0 0 10px;
       font-size: clamp(2rem, 4vw, 3rem);
-      line-height: 1.1;
+      line-height: 1.08;
     }
-    .sub { color: var(--muted); font-size: 1.1rem; margin: 0 0 18px; }
-    .badges { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 6px; }
-    .badge {
-      background: rgba(255,255,255,0.10);
-      border: 1px solid rgba(255,255,255,0.15);
-      border-radius: 999px;
+    .sub {
+      color: var(--muted);
+      margin: 0 0 18px;
+      font-size: 1.1rem;
+      max-width: 760px;
+    }
+    .chips { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 18px; }
+    .chip {
       padding: 8px 12px;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      background: rgba(255, 255, 255, 0.08);
       font-size: 0.9rem;
-      color: #eaf0ff;
     }
-    .sections {
+    .grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit,minmax(240px,1fr));
-      gap: 14px;
-      margin-top: 16px;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 12px;
+      margin-top: 12px;
     }
     .card {
-      background: var(--card);
-      border: 1px solid rgba(255,255,255,0.12);
-      border-radius: 16px;
-      padding: 16px;
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: 14px;
     }
-    h2 { margin: 0 0 8px; font-size: 1.1rem; }
+    h2 { margin: 0 0 8px; font-size: 1.05rem; }
     p { margin: 0; color: var(--muted); line-height: 1.5; }
     .cta {
-      margin-top: 22px;
       display: inline-block;
-      text-decoration: none;
-      color: #111;
-      font-weight: 700;
-      padding: 12px 18px;
+      margin-top: 18px;
+      padding: 12px 16px;
       border-radius: 12px;
+      font-weight: 700;
+      color: #111;
+      text-decoration: none;
       background: linear-gradient(90deg, var(--accent1), var(--accent2));
     }
     footer {
-      margin-top: 28px;
+      margin-top: 24px;
       color: #adbadf;
       font-size: 0.9rem;
     }
@@ -94,34 +108,40 @@
 </head>
 <body>
   <div class="wrap">
-    <nav class="nav">
-      <a href="/timestamp-site/">Home</a>
-      <a href="/timestamp-site/support.html">Support</a>
-      <a href="/timestamp-site/privacy.html">Privacy</a>
-    </nav>
+    <div class="topbar">
+      <div class="brand">Maxwell Games</div>
+      <nav class="nav">
+        <a href="./index.html">Home</a>
+        <a href="./support.html">Support</a>
+        <a href="./privacy.html">Privacy</a>
+        <a href="./terms.html">Terms</a>
+        <a href="./data-deletion.html">Data Deletion</a>
+      </nav>
+    </div>
 
     <section class="hero">
       <h1>TimeStamp!</h1>
       <p class="sub">Guess when your photos were taken. Challenge your memory in daily, practice, and group modes.</p>
-      <div class="badges">
-        <span class="badge">Daily Challenge</span>
-        <span class="badge">Leaderboard</span>
-        <span class="badge">Practice Mode</span>
-        <span class="badge">Group Sessions</span>
+
+      <div class="chips">
+        <span class="chip">Daily Challenge</span>
+        <span class="chip">Leaderboard</span>
+        <span class="chip">Practice Mode</span>
+        <span class="chip">Group Sessions</span>
       </div>
 
-      <div class="sections">
+      <div class="grid">
         <article class="card">
           <h2>How It Works</h2>
-          <p>Pick from your photo moments and guess the year, month, and day. Score points for each correct stage.</p>
+          <p>Guess the year, month, and day from real photos and earn points each round.</p>
         </article>
         <article class="card">
           <h2>Compete</h2>
-          <p>Play the daily challenge and compare results with other players through leaderboard integration.</p>
+          <p>Play daily challenges and compare scores with other players.</p>
         </article>
         <article class="card">
-          <h2>Play With Friends</h2>
-          <p>Start group sessions and turn your memories into social rounds with fast replays.</p>
+          <h2>Social Play</h2>
+          <p>Invite friends and run fast group sessions from your own memories.</p>
         </article>
       </div>
 
@@ -129,7 +149,7 @@
     </section>
 
     <footer>
-      © <span id="year"></span> Maxwell Games. All rights reserved.
+      &copy; <span id="year"></span> Maxwell Games. All rights reserved.
     </footer>
   </div>
 
