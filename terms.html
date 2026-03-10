@@ -3,85 +3,237 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>TimeStamp! Terms of Use</title>
+  <title>Terms of Use — TimeStamp!</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
   <style>
-    body {
-      margin: 0;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-      background: #0d1326;
-      color: #f4f7ff;
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg: #F7F5F2; --ink: #111110; --mid: #6B6860;
+      --rule: #E0DDD8; --tag-bg: #ECEAE6; --white: #FFFFFF;
+      --serif: 'Instrument Serif', Georgia, serif;
+      --sans: 'DM Sans', system-ui, sans-serif;
     }
-    .wrap { max-width: 960px; margin: 0 auto; padding: 28px 20px 48px; }
-    .nav { margin-bottom: 18px; display: flex; gap: 14px; flex-wrap: wrap; }
-    .nav a { color: #b8c5f0; text-decoration: none; }
-    .card {
-      background: #131b36;
-      border: 1px solid #26315d;
-      border-radius: 14px;
-      padding: 20px;
-      margin-bottom: 14px;
+    body { background: var(--bg); color: var(--ink); font-family: var(--sans); font-weight: 300; line-height: 1.7; -webkit-font-smoothing: antialiased; }
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 40px; height: 60px;
+      background: rgba(247,245,242,0.88); backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--rule);
     }
-    h1, h2 { margin-top: 0; }
-    p, li { color: #d2dcff; line-height: 1.6; }
-    a { color: #7fd3ff; }
+    .nav-logo { font-family: var(--serif); font-size: 1.25rem; color: var(--ink); text-decoration: none; }
+    .nav-logo span { font-style: italic; }
+    .nav-links { display: flex; gap: 32px; list-style: none; }
+    .nav-links a { font-size: 0.8125rem; font-weight: 400; color: var(--mid); text-decoration: none; letter-spacing: 0.04em; text-transform: uppercase; transition: color 0.2s; }
+    .nav-links a:hover { color: var(--ink); }
+
+    .page-wrap { max-width: 720px; margin: 0 auto; padding: 120px 40px 80px; }
+    .page-eyebrow { font-size: 0.75rem; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: var(--mid); margin-bottom: 16px; }
+    .page-title { font-family: var(--serif); font-size: 2.75rem; letter-spacing: -0.025em; line-height: 1.1; margin-bottom: 12px; }
+    .page-date { font-size: 0.85rem; color: var(--mid); margin-bottom: 56px; padding-bottom: 56px; border-bottom: 1px solid var(--rule); }
+
+    .toc { background: var(--tag-bg); border-radius: 12px; padding: 28px 32px; margin-bottom: 56px; }
+    .toc-title { font-size: 0.75rem; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; color: var(--mid); margin-bottom: 16px; }
+    .toc ol { padding-left: 18px; }
+    .toc li { margin-bottom: 6px; }
+    .toc a { font-size: 0.875rem; color: var(--ink); text-decoration: none; }
+    .toc a:hover { text-decoration: underline; }
+
+    .section { margin-bottom: 52px; }
+    .section-title { font-family: var(--serif); font-size: 1.45rem; letter-spacing: -0.02em; margin-bottom: 16px; padding-top: 12px; border-top: 1px solid var(--rule); }
+    p { font-size: 0.9375rem; color: #3a3835; margin-bottom: 16px; }
+    ul, ol { padding-left: 22px; margin-bottom: 16px; }
+    li { font-size: 0.9375rem; color: #3a3835; margin-bottom: 8px; line-height: 1.65; }
+    strong { font-weight: 500; color: var(--ink); }
+    a { color: var(--ink); }
+
+    .highlight-box { background: var(--white); border: 1px solid var(--rule); border-radius: 10px; padding: 20px 24px; margin-bottom: 20px; }
+    .highlight-box p { margin-bottom: 0; }
+    .warning-box { background: #fdf8f0; border: 1px solid #e8d9b8; border-radius: 10px; padding: 20px 24px; margin-bottom: 20px; }
+    .warning-box p { margin-bottom: 0; font-size: 0.875rem; }
+
+    footer { border-top: 1px solid var(--rule); padding: 32px 40px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px; }
+    .footer-brand { font-family: var(--serif); font-size: 1rem; color: var(--ink); text-decoration: none; }
+    .footer-brand span { font-style: italic; }
+    .footer-links { display: flex; gap: 24px; list-style: none; }
+    .footer-links a { font-size: 0.8rem; color: var(--mid); text-decoration: none; }
+    .footer-links a:hover { color: var(--ink); }
+    .footer-copy { font-size: 0.75rem; color: var(--mid); width: 100%; }
+
+    @media (max-width: 600px) { nav { padding: 0 20px; } .nav-links { gap: 16px; } .page-wrap { padding: 100px 20px 60px; } footer { padding: 28px 20px; } }
   </style>
 </head>
 <body>
-  <div class="wrap">
-    <nav class="nav">
-      <a href="./index.html">Home</a>
-      <a href="./support.html">Support</a>
-      <a href="./privacy.html">Privacy</a>
-      <a href="./terms.html">Terms</a>
-      <a href="./data-deletion.html">Data Deletion</a>
-    </nav>
 
-    <section class="card">
-      <h1>Terms of Use for TimeStamp!</h1>
-      <p>Effective date: March 3, 2026</p>
-      <p>By using TimeStamp!, you agree to these Terms of Use.</p>
-    </section>
+<nav>
+  <a href="index.html" class="nav-logo">Time<span>Stamp!</span></a>
+  <ul class="nav-links">
+    <li><a href="support.html">Support</a></li>
+    <li><a href="privacy.html">Privacy</a></li>
+    <li><a href="terms.html">Terms</a></li>
+  </ul>
+</nav>
 
-    <section class="card">
-      <h2>Use of the App</h2>
-      <ul>
-        <li>You may use the app for personal, non-commercial purposes.</li>
-        <li>You agree not to misuse the app, interfere with service operation, or attempt unauthorized access.</li>
-      </ul>
-    </section>
+<div class="page-wrap">
+  <div class="page-eyebrow">Legal</div>
+  <h1 class="page-title">Terms of Use</h1>
+  <p class="page-date">Effective date: March 3, 2026 &nbsp;·&nbsp; Maxwell Games</p>
 
-    <section class="card">
-      <h2>User Content and Permissions</h2>
-      <ul>
-        <li>The app may access your photo metadata and selected photo content to provide gameplay.</li>
-        <li>You are responsible for content available through your device account.</li>
-      </ul>
-    </section>
-
-    <section class="card">
-      <h2>Intellectual Property</h2>
-      <p>All app branding, software, and related materials are owned by Maxwell Games or its licensors.</p>
-    </section>
-
-    <section class="card">
-      <h2>Disclaimers</h2>
-      <p>The app is provided "as is" without warranties of any kind, to the extent permitted by law.</p>
-    </section>
-
-    <section class="card">
-      <h2>Limitation of Liability</h2>
-      <p>To the extent permitted by law, Maxwell Games is not liable for indirect, incidental, or consequential damages arising from use of the app.</p>
-    </section>
-
-    <section class="card">
-      <h2>Changes to Terms</h2>
-      <p>We may update these Terms from time to time. Continued use of the app after updates means you accept the revised Terms.</p>
-    </section>
-
-    <section class="card">
-      <h2>Contact</h2>
-      <p>Email: <a href="mailto:support@timestampgame.com">support@timestampgame.com</a></p>
-    </section>
+  <div class="toc">
+    <div class="toc-title">Contents</div>
+    <ol>
+      <li><a href="#acceptance">Acceptance of Terms</a></li>
+      <li><a href="#eligibility">Eligibility &amp; Age Requirements</a></li>
+      <li><a href="#license">License to Use the App</a></li>
+      <li><a href="#user-content">User Content &amp; Photo Access</a></li>
+      <li><a href="#prohibited">Prohibited Conduct</a></li>
+      <li><a href="#purchases">In-App Purchases</a></li>
+      <li><a href="#ip">Intellectual Property</a></li>
+      <li><a href="#third-party">Third-Party Services</a></li>
+      <li><a href="#disclaimer">Disclaimers</a></li>
+      <li><a href="#liability">Limitation of Liability</a></li>
+      <li><a href="#termination">Termination</a></li>
+      <li><a href="#disputes">Dispute Resolution</a></li>
+      <li><a href="#governing-law">Governing Law</a></li>
+      <li><a href="#changes">Changes to Terms</a></li>
+      <li><a href="#contact">Contact Us</a></li>
+    </ol>
   </div>
+
+  <div class="highlight-box">
+    <p><strong>Summary:</strong> By downloading or using TimeStamp!, you agree to these terms. You must be at least 13 years old to use the app. We grant you a limited license to use the app for personal, non-commercial purposes. Disputes are resolved through binding arbitration in [Your State].</p>
+  </div>
+
+  <div class="section" id="acceptance">
+    <div class="section-title">1. Acceptance of Terms</div>
+    <p>By downloading, installing, or using TimeStamp! (the "App"), you agree to be bound by these Terms of Use ("Terms"). These Terms form a legally binding agreement between you and Maxwell Games ("we," "us," or "our"). If you do not agree to these Terms, do not use the App.</p>
+    <p>These Terms apply to all versions of the App, including updates and new features released in the future.</p>
+  </div>
+
+  <div class="section" id="eligibility">
+    <div class="section-title">2. Eligibility &amp; Age Requirements</div>
+    <p>You must be at least <strong>13 years of age</strong> to use TimeStamp!. By using the App, you represent and warrant that you meet this age requirement.</p>
+    <p>If you are between the ages of 13 and 18, you represent that your parent or legal guardian has reviewed and agreed to these Terms on your behalf.</p>
+    <p>We do not knowingly collect personal information from children under 13. If we learn that a user is under 13, we will terminate that user's account and delete associated data.</p>
+  </div>
+
+  <div class="section" id="license">
+    <div class="section-title">3. License to Use the App</div>
+    <p>Subject to your compliance with these Terms, Maxwell Games grants you a limited, non-exclusive, non-transferable, revocable license to download and use the App on a device you own or control, for your personal, non-commercial use.</p>
+    <p>This license does not include the right to:</p>
+    <ul>
+      <li>Sell, resell, or sublicense the App.</li>
+      <li>Copy, modify, or create derivative works of the App.</li>
+      <li>Reverse engineer, decompile, or disassemble the App.</li>
+      <li>Use the App for any commercial purpose without our written consent.</li>
+    </ul>
+  </div>
+
+  <div class="section" id="user-content">
+    <div class="section-title">4. User Content &amp; Photo Access</div>
+    <p>TimeStamp! may access your device's photo library to read photo timestamp metadata (date and time photos were taken) for the purpose of generating gameplay. You grant us permission to access this data solely for that purpose.</p>
+    <p>You represent that you have the right to grant this access for all photos in your library. We do not upload your photos to our servers. All photo data remains on your device. You can revoke photo library access at any time in your iOS Settings.</p>
+    <p>You are solely responsible for any content accessible through your device's photo library and for your compliance with applicable laws with respect to that content.</p>
+  </div>
+
+  <div class="section" id="prohibited">
+    <div class="section-title">5. Prohibited Conduct</div>
+    <p>You agree not to:</p>
+    <ul>
+      <li>Use the App in any way that violates applicable laws or regulations.</li>
+      <li>Attempt to gain unauthorized access to our systems, servers, or other users' accounts.</li>
+      <li>Interfere with or disrupt the integrity or performance of the App or its related services.</li>
+      <li>Cheat, manipulate, or exploit bugs to gain an unfair advantage in gameplay or leaderboards.</li>
+      <li>Use automated bots, scripts, or other non-human means to interact with the App.</li>
+      <li>Engage in any conduct that restricts or inhibits any other user's enjoyment of the App.</li>
+      <li>Attempt to reverse engineer, decompile, or extract source code from the App.</li>
+    </ul>
+  </div>
+
+  <div class="section" id="purchases">
+    <div class="section-title">6. In-App Purchases</div>
+    <p>TimeStamp! may offer optional in-app purchases in the future, including but not limited to premium features, additional game modes, or cosmetic items. Any such purchases will be:</p>
+    <ul>
+      <li>Processed through the Apple App Store and subject to Apple's payment terms.</li>
+      <li>Clearly labeled with pricing before purchase.</li>
+      <li>Non-refundable except as required by applicable law or Apple's refund policies.</li>
+    </ul>
+    <p>If in-app purchases are introduced, we will update these Terms accordingly and notify users prior to launch.</p>
+  </div>
+
+  <div class="section" id="ip">
+    <div class="section-title">7. Intellectual Property</div>
+    <p>All content, design, code, branding, trademarks, logos, and other materials in the App are owned by or licensed to Maxwell Games and are protected by intellectual property laws. Nothing in these Terms transfers any ownership rights to you.</p>
+    <p>"TimeStamp!" and the Maxwell Games name and logo are trademarks of Maxwell Games. You may not use these marks without our prior written consent.</p>
+  </div>
+
+  <div class="section" id="third-party">
+    <div class="section-title">8. Third-Party Services</div>
+    <p>The App integrates third-party services including Firebase (Google LLC) and Apple Game Center. Your use of these services is subject to their respective terms of service and privacy policies. We are not responsible for the practices or content of third-party services.</p>
+  </div>
+
+  <div class="section" id="disclaimer">
+    <div class="section-title">9. Disclaimers</div>
+    <p>THE APP IS PROVIDED "AS IS" AND "AS AVAILABLE" WITHOUT WARRANTIES OF ANY KIND, EITHER EXPRESS OR IMPLIED, TO THE FULLEST EXTENT PERMITTED BY APPLICABLE LAW. WE DISCLAIM ALL WARRANTIES, INCLUDING IMPLIED WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, AND NON-INFRINGEMENT.</p>
+    <p>We do not warrant that the App will be uninterrupted, error-free, or free of viruses or other harmful components. We do not warrant the accuracy or completeness of any content in the App.</p>
+  </div>
+
+  <div class="section" id="liability">
+    <div class="section-title">10. Limitation of Liability</div>
+    <p>TO THE FULLEST EXTENT PERMITTED BY LAW, MAXWELL GAMES AND ITS OFFICERS, DIRECTORS, EMPLOYEES, AND AGENTS SHALL NOT BE LIABLE FOR ANY INDIRECT, INCIDENTAL, SPECIAL, CONSEQUENTIAL, OR PUNITIVE DAMAGES ARISING FROM YOUR USE OF THE APP, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGES.</p>
+    <p>IN NO EVENT SHALL OUR TOTAL LIABILITY TO YOU EXCEED THE GREATER OF (A) THE AMOUNT YOU PAID TO US IN THE TWELVE MONTHS PRIOR TO THE CLAIM, OR (B) $100 USD.</p>
+  </div>
+
+  <div class="section" id="termination">
+    <div class="section-title">11. Termination</div>
+    <p>We reserve the right to suspend or terminate your access to the App at any time, with or without notice, if we reasonably believe you have violated these Terms or applicable law, or if we discontinue the App.</p>
+    <p>You may stop using the App at any time by deleting it from your device. To request deletion of your account and associated data, visit our <a href="data-deletion.html">Data Deletion page</a>.</p>
+    <p>Upon termination, all licenses granted to you under these Terms will immediately cease. Sections that by their nature should survive termination (including Sections 7, 9, 10, 12, and 13) will survive.</p>
+  </div>
+
+  <div class="section" id="disputes">
+    <div class="section-title">12. Dispute Resolution</div>
+    <div class="warning-box">
+      <p><strong>Please read this section carefully.</strong> It affects your legal rights, including your right to file a lawsuit in court.</p>
+    </div>
+    <p><strong>Informal Resolution:</strong> Before initiating any formal dispute, you agree to contact us at <a href="mailto:support@timestampgame.com">support@timestampgame.com</a> and attempt to resolve the dispute informally for at least 30 days.</p>
+    <p><strong>Binding Arbitration:</strong> If the dispute is not resolved informally, you and Maxwell Games agree to resolve any claim, dispute, or controversy arising out of or relating to these Terms or the App through binding individual arbitration, rather than in court, except that either party may bring claims in small claims court if they qualify.</p>
+    <p>Arbitration will be conducted by a recognized arbitration provider under its applicable rules. The arbitration will take place in [Your State], or via remote proceeding if mutually agreed.</p>
+    <p><strong>Class Action Waiver:</strong> You and Maxwell Games agree that each may bring claims against the other only in your or its individual capacity, and not as a plaintiff or class member in any purported class or representative proceeding.</p>
+  </div>
+
+  <div class="section" id="governing-law">
+    <div class="section-title">13. Governing Law</div>
+    <p>These Terms are governed by and construed in accordance with the laws of the State of [Your State], United States, without regard to its conflict of law principles. To the extent any dispute is not subject to arbitration, you consent to the exclusive jurisdiction of the state and federal courts located in [Your State].</p>
+  </div>
+
+  <div class="section" id="changes">
+    <div class="section-title">14. Changes to Terms</div>
+    <p>We may update these Terms from time to time. When we do, we will update the "Effective date" at the top of this page. If we make material changes, we will notify you via in-app notice or, where applicable, via email. Your continued use of the App after the effective date of any changes constitutes your acceptance of the revised Terms.</p>
+  </div>
+
+  <div class="section" id="contact">
+    <div class="section-title">15. Contact Us</div>
+    <p>If you have questions about these Terms, please contact:</p>
+    <div class="highlight-box">
+      <p><strong>Maxwell Games</strong><br>
+      Email: <a href="mailto:support@timestampgame.com">support@timestampgame.com</a></p>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <a href="index.html" class="footer-brand">Time<span>Stamp!</span></a>
+  <ul class="footer-links">
+    <li><a href="support.html">Support</a></li>
+    <li><a href="privacy.html">Privacy Policy</a></li>
+    <li><a href="terms.html">Terms of Use</a></li>
+    <li><a href="data-deletion.html">Data Deletion</a></li>
+  </ul>
+  <div class="footer-copy">© 2026 Maxwell Games. All rights reserved.</div>
+</footer>
+
 </body>
 </html>
