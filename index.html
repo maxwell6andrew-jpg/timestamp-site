@@ -3,158 +3,656 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>TimeStamp! | Maxwell Games</title>
-  <meta name="description" content="TimeStamp! is a social photo date-guessing game with daily challenges, practice mode, and group play." />
+  <title>TimeStamp! — Guess When Your Memories Were Made</title>
+  <meta name="description" content="TimeStamp! is a photo memory game. Guess the year, month, and day your photos were taken. Daily challenges, leaderboards, and group play." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
   <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
     :root {
-      --bg1: #0b1020;
-      --bg2: #1a2340;
-      --card: rgba(255, 255, 255, 0.08);
-      --text: #f5f7ff;
-      --muted: #c7d0f4;
-      --accent1: #ff7f50;
-      --accent2: #31c3ff;
-      --line: rgba(255, 255, 255, 0.15);
+      --bg: #F7F5F2;
+      --ink: #111110;
+      --mid: #6B6860;
+      --accent: #1A1A18;
+      --rule: #E0DDD8;
+      --tag-bg: #ECEAE6;
+      --white: #FFFFFF;
+      --serif: 'Instrument Serif', Georgia, serif;
+      --sans: 'DM Sans', system-ui, sans-serif;
     }
-    * { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
     body {
-      margin: 0;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-      color: var(--text);
-      background: radial-gradient(1200px 700px at 20% -10%, #2a3b70 0%, transparent 50%),
-                  linear-gradient(140deg, var(--bg1), var(--bg2));
-      min-height: 100vh;
+      background: var(--bg);
+      color: var(--ink);
+      font-family: var(--sans);
+      font-weight: 300;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
     }
-    .wrap {
-      max-width: 1040px;
-      margin: 0 auto;
-      padding: 28px 20px 58px;
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 40px;
+      height: 60px;
+      background: rgba(247,245,242,0.88);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--rule);
     }
-    .topbar {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 22px;
-      gap: 16px;
-    }
-    .brand {
-      font-weight: 800;
-      letter-spacing: 0.3px;
-    }
-    .nav {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 14px;
-      font-size: 0.95rem;
-    }
-    .nav a { color: var(--muted); text-decoration: none; }
-    .nav a:hover { color: white; }
-    .hero {
-      background: var(--card);
-      border: 1px solid var(--line);
-      border-radius: 18px;
-      padding: 28px;
-      backdrop-filter: blur(3px);
-    }
-    h1 {
-      margin: 0 0 10px;
-      font-size: clamp(2rem, 4vw, 3rem);
-      line-height: 1.08;
-    }
-    .sub {
-      color: var(--muted);
-      margin: 0 0 18px;
-      font-size: 1.1rem;
-      max-width: 760px;
-    }
-    .chips { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 18px; }
-    .chip {
-      padding: 8px 12px;
-      border-radius: 999px;
-      border: 1px solid var(--line);
-      background: rgba(255, 255, 255, 0.08);
-      font-size: 0.9rem;
-    }
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-      gap: 12px;
-      margin-top: 12px;
-    }
-    .card {
-      background: rgba(255, 255, 255, 0.06);
-      border: 1px solid var(--line);
-      border-radius: 14px;
-      padding: 14px;
-    }
-    h2 { margin: 0 0 8px; font-size: 1.05rem; }
-    p { margin: 0; color: var(--muted); line-height: 1.5; }
-    .cta {
-      display: inline-block;
-      margin-top: 18px;
-      padding: 12px 16px;
-      border-radius: 12px;
-      font-weight: 700;
-      color: #111;
+    .nav-logo {
+      font-family: var(--serif);
+      font-size: 1.25rem;
+      letter-spacing: -0.01em;
+      color: var(--ink);
       text-decoration: none;
-      background: linear-gradient(90deg, var(--accent1), var(--accent2));
     }
-    footer {
-      margin-top: 24px;
-      color: #adbadf;
+    .nav-logo span { font-style: italic; }
+    .nav-links { display: flex; gap: 32px; list-style: none; }
+    .nav-links a {
+      font-size: 0.8125rem;
+      font-weight: 400;
+      color: var(--mid);
+      text-decoration: none;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--ink); }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 100vh;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+      padding: 100px 80px 80px;
+      gap: 60px;
+    }
+    .hero-left { max-width: 520px; }
+    .hero-eyebrow {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-size: 0.75rem; font-weight: 500; letter-spacing: 0.08em;
+      text-transform: uppercase; color: var(--mid);
+      margin-bottom: 28px;
+    }
+    .hero-eyebrow::before {
+      content: '';
+      display: block; width: 20px; height: 1px; background: var(--mid);
+    }
+    .hero-title {
+      font-family: var(--serif);
+      font-size: clamp(3rem, 5vw, 4.5rem);
+      line-height: 1.08;
+      letter-spacing: -0.02em;
+      margin-bottom: 24px;
+    }
+    .hero-title em { font-style: italic; color: var(--mid); }
+    .hero-sub {
+      font-size: 1.0625rem;
+      color: var(--mid);
+      line-height: 1.7;
+      margin-bottom: 44px;
+      max-width: 400px;
+    }
+    .hero-ctas { display: flex; align-items: center; gap: 20px; flex-wrap: wrap; }
+    .btn-primary {
+      display: inline-flex; align-items: center; gap: 10px;
+      background: var(--ink);
+      color: var(--white);
+      padding: 14px 28px;
+      border-radius: 8px;
       font-size: 0.9rem;
+      font-weight: 500;
+      text-decoration: none;
+      letter-spacing: -0.01em;
+      transition: opacity 0.2s, transform 0.2s;
+    }
+    .btn-primary:hover { opacity: 0.82; transform: translateY(-1px); }
+    .btn-primary svg { width: 18px; height: 18px; }
+    .btn-secondary {
+      font-size: 0.875rem; font-weight: 400;
+      color: var(--mid); text-decoration: none;
+      border-bottom: 1px solid var(--rule);
+      padding-bottom: 2px;
+      transition: color 0.2s, border-color 0.2s;
+    }
+    .btn-secondary:hover { color: var(--ink); border-color: var(--ink); }
+
+    /* ── PHONE MOCKUP ── */
+    .hero-right { display: flex; justify-content: center; align-items: center; }
+    .phone-wrap {
+      position: relative;
+      animation: floatPhone 6s ease-in-out infinite;
+    }
+    @keyframes floatPhone {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-12px); }
+    }
+    .phone-frame {
+      width: 280px;
+      background: var(--ink);
+      border-radius: 40px;
+      padding: 12px;
+      box-shadow: 0 40px 80px rgba(0,0,0,0.18), 0 8px 24px rgba(0,0,0,0.1);
+      position: relative;
+    }
+    .phone-notch {
+      width: 90px; height: 28px;
+      background: var(--ink);
+      border-radius: 0 0 18px 18px;
+      margin: 0 auto 8px;
+      position: relative; z-index: 2;
+    }
+    .phone-screen {
+      background: #1C1C1E;
+      border-radius: 30px;
+      overflow: hidden;
+      height: 520px;
+      display: flex; flex-direction: column;
+    }
+    .phone-header {
+      padding: 20px 20px 12px;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .phone-app-title {
+      color: #fff;
+      font-family: var(--serif);
+      font-size: 1.1rem;
+      letter-spacing: -0.01em;
+    }
+    .phone-mode-badge {
+      background: rgba(255,255,255,0.12);
+      color: rgba(255,255,255,0.7);
+      font-size: 0.65rem; font-weight: 500;
+      letter-spacing: 0.06em; text-transform: uppercase;
+      padding: 4px 10px; border-radius: 20px;
+    }
+    .phone-photo {
+      margin: 0 16px;
+      border-radius: 16px;
+      height: 200px;
+      background: linear-gradient(135deg, #3a3530 0%, #6b5d50 50%, #4a4035 100%);
+      display: flex; align-items: center; justify-content: center;
+      position: relative; overflow: hidden;
+    }
+    .photo-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(to bottom, transparent 50%, rgba(0,0,0,0.5));
+    }
+    .photo-label {
+      position: absolute; bottom: 12px; left: 14px;
+      color: rgba(255,255,255,0.6);
+      font-size: 0.65rem; letter-spacing: 0.06em; text-transform: uppercase;
+    }
+    .photo-icon { font-size: 2.5rem; opacity: 0.3; }
+    .phone-guess-area { padding: 16px 16px 0; }
+    .guess-label {
+      color: rgba(255,255,255,0.4);
+      font-size: 0.65rem; letter-spacing: 0.08em; text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+    .guess-year-display {
+      color: #fff;
+      font-family: var(--serif);
+      font-size: 3rem;
+      letter-spacing: -0.03em;
+      line-height: 1;
+      margin-bottom: 8px;
+    }
+    .guess-year-display span { color: rgba(255,255,255,0.2); }
+    .year-slider {
+      width: 100%; height: 3px;
+      background: rgba(255,255,255,0.1);
+      border-radius: 2px; margin-bottom: 16px;
+      position: relative;
+    }
+    .year-slider-fill {
+      height: 100%; width: 68%; background: #fff; border-radius: 2px;
+    }
+    .year-slider-thumb {
+      width: 14px; height: 14px;
+      background: #fff; border-radius: 50%;
+      position: absolute; top: -5.5px; left: 66%;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.4);
+    }
+    .phone-steps {
+      display: flex; gap: 6px; padding: 0 16px;
+    }
+    .step-pill {
+      flex: 1; padding: 7px 0;
+      border-radius: 8px; text-align: center;
+      font-size: 0.65rem; font-weight: 500; letter-spacing: 0.04em; text-transform: uppercase;
+    }
+    .step-pill.active { background: rgba(255,255,255,0.15); color: #fff; }
+    .step-pill.done { background: rgba(255,255,255,0.06); color: rgba(255,255,255,0.3); }
+    .step-pill.upcoming { background: transparent; color: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.08); }
+    .phone-confirm {
+      margin: 14px 16px 16px;
+      background: #fff;
+      color: #111;
+      text-align: center;
+      padding: 13px;
+      border-radius: 12px;
+      font-size: 0.8rem;
+      font-weight: 500;
+      letter-spacing: -0.01em;
+    }
+
+    /* ── STATS STRIP ── */
+    .stats-strip {
+      border-top: 1px solid var(--rule);
+      border-bottom: 1px solid var(--rule);
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      text-align: center;
+    }
+    .stat-cell {
+      padding: 36px 24px;
+      border-right: 1px solid var(--rule);
+    }
+    .stat-cell:last-child { border-right: none; }
+    .stat-num {
+      font-family: var(--serif);
+      font-size: 2.5rem;
+      letter-spacing: -0.03em;
+      line-height: 1;
+      margin-bottom: 6px;
+    }
+    .stat-label {
+      font-size: 0.75rem; color: var(--mid);
+      letter-spacing: 0.05em; text-transform: uppercase;
+    }
+
+    /* ── FEATURES ── */
+    .features {
+      padding: 100px 80px;
+      max-width: 1200px; margin: 0 auto;
+    }
+    .section-eyebrow {
+      font-size: 0.75rem; font-weight: 500; letter-spacing: 0.08em;
+      text-transform: uppercase; color: var(--mid);
+      margin-bottom: 60px;
+      display: flex; align-items: center; gap: 12px;
+    }
+    .section-eyebrow::after {
+      content: ''; flex: 1; height: 1px; background: var(--rule);
+    }
+    .features-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px;
+      background: var(--rule);
+      border: 1px solid var(--rule);
+    }
+    .feature-card {
+      background: var(--bg);
+      padding: 44px 36px;
+      transition: background 0.2s;
+    }
+    .feature-card:hover { background: var(--white); }
+    .feature-num {
+      font-family: var(--serif);
+      font-size: 0.85rem; font-style: italic; color: var(--mid);
+      margin-bottom: 24px;
+    }
+    .feature-title {
+      font-family: var(--serif);
+      font-size: 1.5rem; letter-spacing: -0.02em;
+      margin-bottom: 14px; line-height: 1.2;
+    }
+    .feature-desc { font-size: 0.9rem; color: var(--mid); line-height: 1.7; }
+
+    /* ── HOW IT WORKS ── */
+    .how {
+      padding: 100px 80px;
+      background: var(--ink);
+      color: var(--white);
+    }
+    .how-inner { max-width: 1200px; margin: 0 auto; }
+    .how .section-eyebrow { color: rgba(255,255,255,0.4); }
+    .how .section-eyebrow::after { background: rgba(255,255,255,0.1); }
+    .how-title {
+      font-family: var(--serif);
+      font-size: clamp(2rem, 3.5vw, 3rem);
+      letter-spacing: -0.025em; line-height: 1.1;
+      margin-bottom: 64px; max-width: 520px;
+    }
+    .how-title em { font-style: italic; color: rgba(255,255,255,0.4); }
+    .how-steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 48px; }
+    .how-step {}
+    .how-step-num {
+      font-size: 0.7rem; font-weight: 500; letter-spacing: 0.1em;
+      text-transform: uppercase; color: rgba(255,255,255,0.3);
+      margin-bottom: 20px;
+    }
+    .how-step-title {
+      font-family: var(--serif);
+      font-size: 1.35rem; letter-spacing: -0.02em; margin-bottom: 12px;
+    }
+    .how-step-desc { font-size: 0.875rem; color: rgba(255,255,255,0.5); line-height: 1.7; }
+    .how-step-arrow {
+      margin-top: 28px;
+      width: 32px; height: 32px;
+      border: 1px solid rgba(255,255,255,0.15);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.75rem; color: rgba(255,255,255,0.3);
+    }
+
+    /* ── MODES ── */
+    .modes {
+      padding: 100px 80px;
+      max-width: 1200px; margin: 0 auto;
+    }
+    .modes-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+    .mode-card {
+      border: 1px solid var(--rule);
+      border-radius: 16px;
+      padding: 40px;
+      transition: border-color 0.2s, box-shadow 0.2s;
+      position: relative; overflow: hidden;
+    }
+    .mode-card:hover {
+      border-color: var(--ink);
+      box-shadow: 0 8px 32px rgba(0,0,0,0.06);
+    }
+    .mode-card.featured {
+      background: var(--ink); color: var(--white);
+      border-color: var(--ink);
+    }
+    .mode-icon {
+      width: 44px; height: 44px;
+      background: var(--tag-bg);
+      border-radius: 12px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.25rem;
+      margin-bottom: 24px;
+    }
+    .mode-card.featured .mode-icon { background: rgba(255,255,255,0.1); }
+    .mode-title {
+      font-family: var(--serif);
+      font-size: 1.4rem; letter-spacing: -0.02em;
+      margin-bottom: 10px;
+    }
+    .mode-desc { font-size: 0.875rem; color: var(--mid); line-height: 1.7; }
+    .mode-card.featured .mode-desc { color: rgba(255,255,255,0.5); }
+    .mode-tag {
+      display: inline-block; margin-top: 20px;
+      font-size: 0.7rem; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase;
+      color: var(--mid); background: var(--tag-bg);
+      padding: 5px 12px; border-radius: 20px;
+    }
+    .mode-card.featured .mode-tag { background: rgba(255,255,255,0.12); color: rgba(255,255,255,0.6); }
+
+    /* ── CTA ── */
+    .cta-section {
+      padding: 120px 80px;
+      text-align: center;
+      border-top: 1px solid var(--rule);
+    }
+    .cta-title {
+      font-family: var(--serif);
+      font-size: clamp(2.5rem, 5vw, 4rem);
+      letter-spacing: -0.03em; line-height: 1.05;
+      margin-bottom: 20px;
+    }
+    .cta-title em { font-style: italic; color: var(--mid); }
+    .cta-sub { font-size: 1rem; color: var(--mid); margin-bottom: 44px; }
+    .cta-coming-soon {
+      display: inline-flex; align-items: center; gap: 10px;
+      background: var(--ink); color: var(--white);
+      padding: 16px 36px; border-radius: 10px;
+      font-size: 0.95rem; font-weight: 500; letter-spacing: -0.01em;
+      text-decoration: none; transition: opacity 0.2s;
+    }
+    .cta-coming-soon:hover { opacity: 0.8; }
+    .soon-badge {
+      background: rgba(255,255,255,0.15);
+      font-size: 0.65rem; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase;
+      padding: 3px 8px; border-radius: 4px;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      border-top: 1px solid var(--rule);
+      padding: 40px 80px;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .footer-brand {
+      font-family: var(--serif); font-size: 1rem;
+      color: var(--ink); text-decoration: none;
+    }
+    .footer-brand span { font-style: italic; }
+    .footer-links { display: flex; gap: 28px; list-style: none; }
+    .footer-links a {
+      font-size: 0.8rem; color: var(--mid);
+      text-decoration: none; transition: color 0.2s;
+    }
+    .footer-links a:hover { color: var(--ink); }
+    .footer-copy { font-size: 0.75rem; color: var(--mid); }
+
+    /* ── ANIMATIONS ── */
+    .fade-up {
+      opacity: 0; transform: translateY(20px);
+      animation: fadeUp 0.7s ease forwards;
+    }
+    @keyframes fadeUp {
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .delay-1 { animation-delay: 0.1s; }
+    .delay-2 { animation-delay: 0.22s; }
+    .delay-3 { animation-delay: 0.34s; }
+    .delay-4 { animation-delay: 0.46s; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      nav { padding: 0 24px; }
+      .nav-links { gap: 20px; }
+      .hero { grid-template-columns: 1fr; padding: 100px 24px 60px; gap: 48px; }
+      .hero-right { order: -1; }
+      .phone-frame { width: 240px; }
+      .phone-screen { height: 440px; }
+      .stats-strip { grid-template-columns: 1fr; }
+      .stat-cell { border-right: none; border-bottom: 1px solid var(--rule); }
+      .stat-cell:last-child { border-bottom: none; }
+      .features { padding: 60px 24px; }
+      .features-grid { grid-template-columns: 1fr; }
+      .how { padding: 60px 24px; }
+      .how-steps { grid-template-columns: 1fr; gap: 36px; }
+      .modes { padding: 60px 24px; }
+      .modes-grid { grid-template-columns: 1fr; }
+      .cta-section { padding: 80px 24px; }
+      footer { padding: 32px 24px; flex-direction: column; gap: 20px; text-align: center; }
+      .footer-links { flex-wrap: wrap; justify-content: center; }
     }
   </style>
 </head>
 <body>
-  <div class="wrap">
-    <div class="topbar">
-      <div class="brand">Maxwell Games</div>
-      <nav class="nav">
-        <a href="./index.html">Home</a>
-        <a href="./support.html">Support</a>
-        <a href="./privacy.html">Privacy</a>
-        <a href="./terms.html">Terms</a>
-        <a href="./data-deletion.html">Data Deletion</a>
-      </nav>
+
+  <!-- NAV -->
+  <nav>
+    <a href="/" class="nav-logo">Time<span>Stamp!</span></a>
+    <ul class="nav-links">
+      <li><a href="support.html">Support</a></li>
+      <li><a href="privacy.html">Privacy</a></li>
+      <li><a href="terms.html">Terms</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-left">
+      <div class="hero-eyebrow fade-up">A Game by Maxwell Games</div>
+      <h1 class="hero-title fade-up delay-1">
+        How well do you know your <em>own memories?</em>
+      </h1>
+      <p class="hero-sub fade-up delay-2">
+        TimeStamp! pulls photos from your library and challenges you to guess when they were taken — year, month, day. Your memory is the game.
+      </p>
+      <div class="hero-ctas fade-up delay-3">
+        <a href="#" class="btn-primary">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+          Download on the App Store
+        </a>
+        <a href="#how" class="btn-secondary">See how it works ↓</a>
+      </div>
     </div>
 
-    <section class="hero">
-      <h1>TimeStamp!</h1>
-      <p class="sub">Guess when your photos were taken. Challenge your memory in daily, practice, and group modes.</p>
-
-      <div class="chips">
-        <span class="chip">Daily Challenge</span>
-        <span class="chip">Leaderboard</span>
-        <span class="chip">Practice Mode</span>
-        <span class="chip">Group Sessions</span>
+    <div class="hero-right fade-up delay-4">
+      <div class="phone-wrap">
+        <div class="phone-frame">
+          <div class="phone-notch"></div>
+          <div class="phone-screen">
+            <div class="phone-header">
+              <div class="phone-app-title">TimeStamp!</div>
+              <div class="phone-mode-badge">Daily</div>
+            </div>
+            <div class="phone-photo">
+              <div class="photo-overlay"></div>
+              <div class="photo-icon">🏔</div>
+              <div class="photo-label">Photo 3 of 5</div>
+            </div>
+            <div class="phone-guess-area">
+              <div class="guess-label">Guess the year</div>
+              <div class="guess-year-display">201<span>?</span></div>
+              <div class="year-slider">
+                <div class="year-slider-fill"></div>
+                <div class="year-slider-thumb"></div>
+              </div>
+            </div>
+            <div class="phone-steps">
+              <div class="step-pill done">Year</div>
+              <div class="step-pill active">Month</div>
+              <div class="step-pill upcoming">Day</div>
+            </div>
+            <div class="phone-confirm">Confirm Guess →</div>
+          </div>
+        </div>
       </div>
+    </div>
+  </section>
 
-      <div class="grid">
-        <article class="card">
-          <h2>How It Works</h2>
-          <p>Guess the year, month, and day from real photos and earn points each round.</p>
-        </article>
-        <article class="card">
-          <h2>Compete</h2>
-          <p>Play daily challenges and compare scores with other players.</p>
-        </article>
-        <article class="card">
-          <h2>Social Play</h2>
-          <p>Invite friends and run fast group sessions from your own memories.</p>
-        </article>
-      </div>
-
-      <a class="cta" href="#" aria-label="Download on the App Store (coming soon)">Download on the App Store (Coming Soon)</a>
-    </section>
-
-    <footer>
-      &copy; <span id="year"></span> Maxwell Games. All rights reserved.
-    </footer>
+  <!-- STATS -->
+  <div class="stats-strip">
+    <div class="stat-cell">
+      <div class="stat-num">3</div>
+      <div class="stat-label">Game Modes</div>
+    </div>
+    <div class="stat-cell">
+      <div class="stat-num">Daily</div>
+      <div class="stat-label">New Challenges</div>
+    </div>
+    <div class="stat-cell">
+      <div class="stat-num">∞</div>
+      <div class="stat-label">Your Photos</div>
+    </div>
   </div>
 
-  <script>
-    document.getElementById("year").textContent = new Date().getFullYear();
-  </script>
+  <!-- FEATURES -->
+  <section class="features">
+    <div class="section-eyebrow">Features</div>
+    <div class="features-grid">
+      <div class="feature-card">
+        <div class="feature-num">01</div>
+        <div class="feature-title">Your photos, your game</div>
+        <p class="feature-desc">TimeStamp uses photos from your own library. Every round is personal — no stock images, no shared pools. Just your memories.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-num">02</div>
+        <div class="feature-title">Progressive guessing</div>
+        <p class="feature-desc">Narrow it down step by step — year first, then month, then day. Each layer earns points. Precision pays off.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-num">03</div>
+        <div class="feature-title">Compete and compare</div>
+        <p class="feature-desc">Daily challenges put you on the global leaderboard. Share your score and see who knows their own memories best.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS -->
+  <section class="how" id="how">
+    <div class="how-inner">
+      <div class="section-eyebrow">How It Works</div>
+      <h2 class="how-title">Three steps. <em>A hundred memories.</em></h2>
+      <div class="how-steps">
+        <div class="how-step">
+          <div class="how-step-num">Step 01</div>
+          <div class="how-step-title">A photo appears</div>
+          <p class="how-step-desc">TimeStamp selects a photo from your library — no context, just the image. Do you remember when it was taken?</p>
+          <div class="how-step-arrow">→</div>
+        </div>
+        <div class="how-step">
+          <div class="how-step-num">Step 02</div>
+          <div class="how-step-title">Make your guess</div>
+          <p class="how-step-desc">Start with the year, then the month, then narrow it to the exact day. Each level unlocks the next. Closer = more points.</p>
+          <div class="how-step-arrow">→</div>
+        </div>
+        <div class="how-step">
+          <div class="how-step-num">Step 03</div>
+          <div class="how-step-title">See your score</div>
+          <p class="how-step-desc">The reveal shows the real date alongside your guess. Accumulate points across 5 rounds and post your best to the leaderboard.</p>
+          <div class="how-step-arrow">✓</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MODES -->
+  <section class="modes">
+    <div class="section-eyebrow">Game Modes</div>
+    <div class="modes-grid">
+      <div class="mode-card featured">
+        <div class="mode-icon">📅</div>
+        <div class="mode-title">Daily Challenge</div>
+        <p class="mode-desc">A new set of photos every day. One shot at the leaderboard. Compare your score with players worldwide.</p>
+        <span class="mode-tag">Every day</span>
+      </div>
+      <div class="mode-card">
+        <div class="mode-icon">🎯</div>
+        <div class="mode-title">Practice Mode</div>
+        <p class="mode-desc">Play as many rounds as you like with no pressure. Sharpen your instincts and explore your own photo library.</p>
+        <span class="mode-tag">Unlimited rounds</span>
+      </div>
+      <div class="mode-card">
+        <div class="mode-icon">👥</div>
+        <div class="mode-title">Group Sessions</div>
+        <p class="mode-desc">Host a session with friends — everyone guesses from the same photo. Great for parties, family game nights, and road trips.</p>
+        <span class="mode-tag">Multiplayer</span>
+      </div>
+      <div class="mode-card">
+        <div class="mode-icon">🏆</div>
+        <div class="mode-title">Leaderboard</div>
+        <p class="mode-desc">Daily rankings, all-time scores, and friend comparisons. Find out who in your circle has the sharpest memory.</p>
+        <span class="mode-tag">Global rankings</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-section">
+    <h2 class="cta-title">Ready to test your <em>memory?</em></h2>
+    <p class="cta-sub">TimeStamp is coming soon to the App Store.</p>
+    <a href="#" class="cta-coming-soon">
+      Download on the App Store
+      <span class="soon-badge">Soon</span>
+    </a>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <a href="/" class="footer-brand">Time<span>Stamp!</span></a>
+    <ul class="footer-links">
+      <li><a href="support.html">Support</a></li>
+      <li><a href="privacy.html">Privacy Policy</a></li>
+      <li><a href="terms.html">Terms of Use</a></li>
+      <li><a href="data-deletion.html">Data Deletion</a></li>
+    </ul>
+    <div class="footer-copy">© 2026 Maxwell Games</div>
+  </footer>
+
 </body>
 </html>
