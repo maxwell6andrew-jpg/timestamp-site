@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Privacy Policy — TimeStamp! — TimeStamp Games</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root { --cream: #F7F5F2; --ink: #111110; --muted: #6B6860; --rule: #E0DDD8; --ts-accent: #D97706; }
+    body { background: var(--cream); color: var(--ink); font-family: 'DM Sans', sans-serif; line-height: 1.7; overflow-x: hidden; }
+    body::before {
+      content: ''; position: fixed; inset: 0; pointer-events: none; z-index: 9999; opacity: 0.025;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.4'/%3E%3C/svg%3E");
+    }
+    nav { position: sticky; top: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 0 40px; height: 64px; background: rgba(247,245,242,0.92); backdrop-filter: blur(12px); border-bottom: 1px solid var(--rule); }
+    .wordmark { font-family: 'Instrument Serif', serif; font-size: 1.25rem; color: var(--ink); text-decoration: none; }
+    .nav-links { display: flex; align-items: center; gap: 36px; }
+    .nav-links a, .nav-links .dropdown > span { font-size: 0.875rem; font-weight: 500; color: var(--muted); text-decoration: none; cursor: pointer; transition: color 0.2s; }
+    .nav-links a:hover, .nav-links .dropdown:hover > span { color: var(--ink); }
+    .dropdown { position: relative; }
+    .dropdown-menu { display: none; position: absolute; top: calc(100% + 12px); right: 0; background: #fff; border: 1px solid var(--rule); border-radius: 10px; overflow: hidden; min-width: 160px; box-shadow: 0 8px 24px rgba(17,17,16,0.08); }
+    .dropdown:hover .dropdown-menu { display: block; }
+    .dropdown-menu a { display: block; padding: 10px 16px; font-size: 0.875rem; color: var(--ink) !important; text-decoration: none; transition: background 0.15s; }
+    .dropdown-menu a:hover { background: var(--cream); }
+
+    .doc-wrap { max-width: 720px; margin: 0 auto; padding: 72px 40px 100px; }
+
+    .doc-game-badge {
+      display: inline-flex; align-items: center; gap: 6px;
+      font-size: 0.7rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase;
+      padding: 5px 12px; border-radius: 20px; margin-bottom: 20px;
+      background: rgba(217,119,6,0.1); color: var(--ts-accent); border: 1px solid rgba(217,119,6,0.25);
+    }
+
+    .doc-wrap h1 { font-family: 'Instrument Serif', serif; font-size: clamp(2rem, 4vw, 2.8rem); letter-spacing: -0.025em; line-height: 1.1; margin-bottom: 12px; }
+    .doc-meta { font-size: 0.85rem; color: var(--muted); margin-bottom: 48px; padding-bottom: 32px; border-bottom: 1px solid var(--rule); }
+
+    .doc-wrap h2 { font-family: 'Instrument Serif', serif; font-size: 1.3rem; letter-spacing: -0.01em; color: var(--ink); margin: 40px 0 12px; }
+    .doc-wrap h3 { font-size: 0.95rem; font-weight: 600; color: var(--ink); margin: 24px 0 8px; }
+    .doc-wrap p { font-size: 0.95rem; color: var(--muted); margin-bottom: 14px; }
+    .doc-wrap ul { padding-left: 20px; margin-bottom: 14px; }
+    .doc-wrap ul li { font-size: 0.95rem; color: var(--muted); margin-bottom: 6px; }
+    .doc-wrap a { color: var(--ts-accent); text-decoration: none; }
+    .doc-wrap a:hover { text-decoration: underline; }
+
+    .highlight-box {
+      background: rgba(217,119,6,0.06); border: 1px solid rgba(217,119,6,0.18);
+      border-radius: 12px; padding: 18px 20px; margin: 24px 0;
+    }
+    .highlight-box p { margin: 0; color: var(--ink); font-weight: 500; font-size: 0.9rem; }
+
+    footer { padding: 40px; border-top: 1px solid var(--rule); }
+    .footer-inner { max-width: 720px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px; }
+    .footer-copy { font-size: 0.8rem; color: var(--muted); }
+    .footer-links { display: flex; flex-wrap: wrap; gap: 20px; }
+    .footer-links a { font-size: 0.8rem; color: var(--muted); text-decoration: none; transition: color 0.2s; }
+    .footer-links a:hover { color: var(--ink); }
+
+    @media (max-width: 700px) { nav { padding: 0 20px; } .doc-wrap { padding: 48px 20px 60px; } footer { padding: 28px 20px; } .footer-inner { flex-direction: column; align-items: flex-start; } }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="wordmark">TimeStamp Games</a>
+  <div class="nav-links">
+    <div class="dropdown">
+      <span>Privacy ▾</span>
+      <div class="dropdown-menu">
+        <a href="privacy-timestamp.html">TimeStamp!</a>
+        <a href="privacy-draftable.html">Draftable</a>
+      </div>
+    </div>
+    <a href="support.html">Support</a>
+    <a href="terms.html">Terms</a>
+  </div>
+</nav>
+
+<div class="doc-wrap">
+  <span class="doc-game-badge">TimeStamp!</span>
+  <h1>Privacy Policy</h1>
+  <p class="doc-meta">Effective Date: March 3, 2026 &nbsp;·&nbsp; Andrew Maxwell, d/b/a Andrew Maxwell &nbsp;·&nbsp; <a href="mailto:support@timestampgames.com">support@timestampgames.com</a></p>
+
+  <div class="highlight-box">
+    <p>📷 Your photos never leave your device. TimeStamp! only reads the date each photo was taken — no images are uploaded to any server, ever.</p>
+  </div>
+
+  <h2>1. About This Policy</h2>
+  <p>This Privacy Policy describes how Andrew Maxwell ("we," "us," or "our") handles information in connection with the TimeStamp! iOS app. We are committed to protecting your privacy and being transparent about how the app works.</p>
+
+  <h2>2. Information We Access — And Don't</h2>
+
+  <h3>Photo Library (Metadata Only)</h3>
+  <p>TimeStamp! requests access to your device's photo library in order to read the timestamp metadata — the date and time each photo was taken. This is the core mechanic of the game.</p>
+  <ul>
+    <li>We read the <strong>date/time</strong> a photo was captured.</li>
+    <li>We do <strong>not</strong> upload, transmit, or store your photos on any server.</li>
+    <li>We do <strong>not</strong> view the content of your photos.</li>
+    <li>All photo processing happens locally on your device.</li>
+  </ul>
+  <p>You can revoke photo access at any time via <strong>iOS Settings → Privacy &amp; Security → Photos → TimeStamp!</strong> Revoking access will prevent the app from functioning, but you can re-grant it at any time.</p>
+
+  <h3>Information We Do Not Collect</h3>
+  <ul>
+    <li>Your name, email address, or contact information (unless you contact us directly)</li>
+    <li>Device location or GPS data</li>
+    <li>Your photo images or their content</li>
+    <li>Health or biometric data</li>
+    <li>Financial or payment information</li>
+  </ul>
+
+  <h2>3. Analytics</h2>
+  <p>We use Firebase Analytics (provided by Google) to collect anonymous, aggregated usage data. This helps us understand how the app is used — for example, which game modes are most popular and how often the app is launched. This data cannot identify you personally.</p>
+  <p>Firebase Analytics may collect:</p>
+  <ul>
+    <li>App session information (duration, frequency)</li>
+    <li>Device type and iOS version (anonymous)</li>
+    <li>In-app events (game mode selected, round completed)</li>
+    <li>Crash reports</li>
+  </ul>
+  <p>Firebase Analytics data is governed by <a href="https://policies.google.com/privacy" target="_blank">Google's Privacy Policy</a>.</p>
+
+  <h2>4. Apple Game Center</h2>
+  <p>TimeStamp! optionally integrates with Apple Game Center for Daily Challenge leaderboards. If you choose to participate:</p>
+  <ul>
+    <li>Your Game Center display name and score are submitted to Apple's leaderboard service.</li>
+    <li>This integration is governed by <a href="https://www.apple.com/legal/privacy/" target="_blank">Apple's Privacy Policy</a>.</li>
+    <li>You can opt out of Game Center at any time via iOS Settings → Game Center.</li>
+  </ul>
+  <p>We do not have access to your Apple ID or any payment information associated with your Apple account.</p>
+
+  <h2>5. How We Use Information</h2>
+  <p>The limited data we collect through Firebase Analytics is used solely to:</p>
+  <ul>
+    <li>Improve app performance and user experience</li>
+    <li>Identify and fix bugs or crashes</li>
+    <li>Understand which features are most valuable to players</li>
+  </ul>
+  <p>We do not use your information for advertising, profiling, or any commercial purpose beyond improving the app.</p>
+
+  <h2>6. Data Sharing</h2>
+  <p>We do not sell, rent, or share your personal information with third parties for marketing purposes. We share data only with:</p>
+  <ul>
+    <li><strong>Firebase / Google</strong> — anonymous analytics as described above</li>
+    <li><strong>Apple</strong> — Game Center leaderboard data if you opt in</li>
+    <li><strong>Legal authorities</strong> — if required by law or to protect our rights</li>
+  </ul>
+
+  <h2>7. Children's Privacy</h2>
+  <p>TimeStamp! is not directed at children under 13. We do not knowingly collect personal information from children under 13. If you believe a child under 13 has provided us with information, please contact us at <a href="mailto:support@timestampgames.com">support@timestampgames.com</a> and we will promptly delete it.</p>
+
+  <h2>8. Data Retention &amp; Deletion</h2>
+  <p>Since we do not store personal data on our servers, there is nothing to delete on our end. Anonymous Firebase Analytics data is retained according to Google's standard retention policies. To remove all local app data, simply delete the TimeStamp! app from your device. See our <a href="data-deletion.html">Data Deletion page</a> for step-by-step instructions.</p>
+
+  <h2>9. Security</h2>
+  <p>We take reasonable precautions to protect any data we handle. Since your photos never leave your device and we collect no personally identifiable information, your privacy risk is minimal by design.</p>
+
+  <h2>10. Changes to This Policy</h2>
+  <p>We may update this Privacy Policy from time to time. If we make material changes, we will update the "Effective Date" at the top of this page. Continued use of the app after changes constitutes acceptance of the revised policy.</p>
+
+  <h2>11. Contact Us</h2>
+  <p>If you have questions or concerns about this Privacy Policy, please contact us:</p>
+  <p><strong>Email:</strong> <a href="mailto:support@timestampgames.com">support@timestampgames.com</a><br>
+  <strong>Company:</strong> Andrew Maxwell, d/b/a Andrew Maxwell</p>
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <span class="footer-copy">© 2026 TimeStamp Games</span>
+    <div class="footer-links">
+      <a href="mailto:support@timestampgames.com">support@timestampgames.com</a>
+      <a href="privacy-timestamp.html">Privacy (TimeStamp!)</a>
+      <a href="privacy-draftable.html">Privacy (Draftable)</a>
+      <a href="terms.html">Terms</a>
+      <a href="data-deletion.html">Data Deletion</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

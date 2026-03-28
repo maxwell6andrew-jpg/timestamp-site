@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Support — TimeStamp Games</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --cream: #F7F5F2; --ink: #111110; --muted: #6B6860; --rule: #E0DDD8;
+      --ts-accent: #D97706; --dr-cyan: #00D4FF; --dr-purple: #a855f7; --dr-dark: #0d0d12;
+    }
+    body { background: var(--cream); color: var(--ink); font-family: 'DM Sans', sans-serif; line-height: 1.6; overflow-x: hidden; }
+    body::before {
+      content: ''; position: fixed; inset: 0; pointer-events: none; z-index: 9999; opacity: 0.025;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.4'/%3E%3C/svg%3E");
+    }
+
+    nav {
+      position: sticky; top: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 40px; height: 64px;
+      background: rgba(247,245,242,0.92); backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--rule);
+    }
+    .wordmark { font-family: 'Instrument Serif', serif; font-size: 1.25rem; color: var(--ink); text-decoration: none; }
+    .nav-links { display: flex; align-items: center; gap: 36px; }
+    .nav-links a, .nav-links .dropdown > span { font-size: 0.875rem; font-weight: 500; color: var(--muted); text-decoration: none; cursor: pointer; transition: color 0.2s; }
+    .nav-links a:hover, .nav-links .dropdown:hover > span { color: var(--ink); }
+    .dropdown { position: relative; }
+    .dropdown-menu { display: none; position: absolute; top: calc(100% + 12px); right: 0; background: #fff; border: 1px solid var(--rule); border-radius: 10px; overflow: hidden; min-width: 160px; box-shadow: 0 8px 24px rgba(17,17,16,0.08); }
+    .dropdown:hover .dropdown-menu { display: block; }
+    .dropdown-menu a { display: block; padding: 10px 16px; font-size: 0.875rem; color: var(--ink) !important; text-decoration: none; transition: background 0.15s; }
+    .dropdown-menu a:hover { background: var(--cream); }
+
+    /* PAGE HEADER */
+    .page-header {
+      max-width: 860px; margin: 0 auto; padding: 72px 40px 48px;
+      border-bottom: 1px solid var(--rule);
+    }
+    .page-eyebrow { font-size: 0.7rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); margin-bottom: 16px; }
+    .page-header h1 { font-family: 'Instrument Serif', serif; font-size: clamp(2.2rem, 5vw, 3.5rem); letter-spacing: -0.025em; line-height: 1.1; color: var(--ink); margin-bottom: 14px; }
+    .page-header p { font-size: 1rem; color: var(--muted); max-width: 440px; }
+
+    /* GAME TABS */
+    .tab-bar {
+      max-width: 860px; margin: 0 auto; padding: 0 40px;
+      display: flex; gap: 0; border-bottom: 1px solid var(--rule);
+    }
+    .tab-btn {
+      display: flex; align-items: center; gap: 8px;
+      padding: 18px 24px; background: none; border: none;
+      font-family: 'DM Sans', sans-serif; font-size: 0.9rem; font-weight: 600;
+      color: var(--muted); cursor: pointer; border-bottom: 2px solid transparent;
+      margin-bottom: -1px; transition: color 0.2s, border-color 0.2s;
+    }
+    .tab-btn.active-dr { color: #0ea5c5; border-bottom-color: var(--dr-cyan); }
+    .tab-btn.active-ts { color: var(--ts-accent); border-bottom-color: var(--ts-accent); }
+    .tab-dot { width: 8px; height: 8px; border-radius: 50%; }
+
+    /* LAYOUT */
+    .support-layout {
+      max-width: 860px; margin: 0 auto; padding: 0 40px 80px;
+      display: grid; grid-template-columns: 200px 1fr; gap: 48px; align-items: start;
+    }
+
+    .sidebar {
+      position: sticky; top: 88px; padding-top: 40px;
+    }
+
+    .sidebar-section { margin-bottom: 4px; }
+
+    .sidebar-link {
+      display: block; padding: 8px 12px; border-radius: 8px;
+      font-size: 0.85rem; font-weight: 500; color: var(--muted);
+      text-decoration: none; cursor: pointer; transition: background 0.15s, color 0.2s;
+      border: none; background: none; width: 100%; text-align: left; font-family: 'DM Sans', sans-serif;
+    }
+    .sidebar-link:hover { background: rgba(17,17,16,0.05); color: var(--ink); }
+    .sidebar-link.active { background: rgba(17,17,16,0.07); color: var(--ink); font-weight: 600; }
+
+    /* CONTENT */
+    .support-content { padding-top: 40px; }
+
+    .faq-section { margin-bottom: 48px; }
+
+    .section-heading {
+      font-family: 'Instrument Serif', serif; font-size: 1.4rem;
+      letter-spacing: -0.01em; color: var(--ink); margin-bottom: 16px;
+      padding-bottom: 12px; border-bottom: 1px solid var(--rule);
+    }
+
+    .accordion { border: 1px solid var(--rule); border-radius: 12px; overflow: hidden; }
+
+    .accordion-item { border-top: 1px solid var(--rule); }
+    .accordion-item:first-child { border-top: none; }
+
+    .accordion-trigger {
+      width: 100%; display: flex; align-items: center; justify-content: space-between;
+      padding: 16px 20px; background: none; border: none; cursor: pointer;
+      font-family: 'DM Sans', sans-serif; font-size: 0.925rem; font-weight: 500;
+      color: var(--ink); text-align: left; gap: 12px; transition: background 0.15s;
+    }
+    .accordion-trigger:hover { background: rgba(17,17,16,0.025); }
+
+    .acc-icon {
+      width: 20px; height: 20px; border-radius: 50%; flex-shrink: 0;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.7rem; font-weight: 700; transition: transform 0.25s;
+      background: rgba(17,17,16,0.07); color: var(--muted);
+    }
+    .accordion-item.open .acc-icon { transform: rotate(45deg); }
+
+    .accordion-body {
+      display: none; padding: 0 20px 18px; font-size: 0.9rem; color: var(--muted); line-height: 1.7;
+    }
+    .accordion-item.open .accordion-body { display: block; }
+
+    /* Panel switching */
+    .tab-panel { display: none; }
+    .tab-panel.active { display: block; }
+
+    /* CONTACT SECTION */
+    .contact-section {
+      background: var(--ink); color: #fff; border-radius: 20px;
+      padding: 48px; margin-top: 16px;
+    }
+    .contact-section h2 { font-family: 'Instrument Serif', serif; font-size: 1.8rem; letter-spacing: -0.02em; margin-bottom: 10px; }
+    .contact-section p { color: rgba(255,255,255,0.55); font-size: 0.95rem; margin-bottom: 28px; max-width: 400px; }
+    .contact-email {
+      display: inline-flex; align-items: center; gap: 10px;
+      background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.12);
+      padding: 14px 22px; border-radius: 12px; text-decoration: none;
+      color: #fff; font-weight: 600; font-size: 0.95rem; transition: background 0.2s;
+    }
+    .contact-email:hover { background: rgba(255,255,255,0.14); }
+    .contact-note { margin-top: 16px; font-size: 0.8rem; color: rgba(255,255,255,0.3); }
+
+    footer { padding: 40px; border-top: 1px solid var(--rule); }
+    .footer-inner { max-width: 860px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px; }
+    .footer-copy { font-size: 0.8rem; color: var(--muted); }
+    .footer-links { display: flex; flex-wrap: wrap; gap: 20px; }
+    .footer-links a { font-size: 0.8rem; color: var(--muted); text-decoration: none; transition: color 0.2s; }
+    .footer-links a:hover { color: var(--ink); }
+
+    @media (max-width: 700px) {
+      nav { padding: 0 20px; } .nav-links { gap: 20px; }
+      .page-header { padding: 48px 20px 32px; }
+      .tab-bar { padding: 0 20px; }
+      .support-layout { grid-template-columns: 1fr; padding: 0 20px 60px; gap: 0; }
+      .sidebar { display: none; }
+      footer { padding: 28px 20px; }
+      .footer-inner { flex-direction: column; align-items: flex-start; }
+      .contact-section { padding: 32px 24px; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="wordmark">TimeStamp Games</a>
+  <div class="nav-links">
+    <div class="dropdown">
+      <span>Privacy ▾</span>
+      <div class="dropdown-menu">
+        <a href="privacy-timestamp.html">TimeStamp!</a>
+        <a href="privacy-draftable.html">Draftable</a>
+      </div>
+    </div>
+    <a href="support.html">Support</a>
+    <a href="terms.html">Terms</a>
+  </div>
+</nav>
+
+<div class="page-header">
+  <p class="page-eyebrow">Help Center</p>
+  <h1>Support</h1>
+  <p>Find answers for both games below, or reach out directly — we respond within 1–3 business days.</p>
+</div>
+
+<div class="tab-bar">
+  <button class="tab-btn active-dr" onclick="switchTab('draftable', this)">
+    <span class="tab-dot" style="background:var(--dr-cyan);"></span> Draftable
+  </button>
+  <button class="tab-btn" onclick="switchTab('timestamp', this)">
+    <span class="tab-dot" style="background:var(--ts-accent);"></span> TimeStamp!
+  </button>
+</div>
+
+<div class="support-layout">
+  <!-- SIDEBAR -->
+  <aside class="sidebar" id="sidebar">
+    <!-- populated by JS -->
+  </aside>
+
+  <!-- CONTENT -->
+  <main class="support-content">
+
+    <!-- DRAFTABLE PANEL -->
+    <div class="tab-panel active" id="panel-draftable">
+
+      <div class="faq-section" id="dr-getting-started">
+        <h2 class="section-heading">Getting Started</h2>
+        <div class="accordion">
+          <div class="accordion-item">
+            <button class="accordion-trigger"><span>What is Draftable?</span><div class="acc-icon">+</div></button>
+            <div class="accordion-body">Draftable is a multiplayer party game where players take turns drafting picks for a category — like "Greatest NBA Players" or "Best Pizza Toppings." When everyone's done, a poll link is shared to your group chat so friends can vote on who drafted best. No app required to vote.</div>
+          </div>
+          <div class="accordion-item">
+            <button class="accordion-trigger"><span>Do I need an account to play?</span><div class="acc-icon">+</div></button>
+            <div class="accordion-body">No account needed. Just open the app, enter your name, and either create or join a room with a 4-letter code. Everyone who votes via the web link also doesn't need an account.</div>
+          </div>
+          <div class="accordion-item">
+            <button class="accordion-trigger"><span>How many players can join a room?</span><div class="acc-icon">+</div></button>
+            <div class="accordion-body">Draftable works best with 2–5 players. Everyone in the room needs the iOS app to participate in the draft itself. Voters who receive the poll link don't need the app.</div>
+          </div>
+          <div class="accordion-item">
+            <button class="accordion-trigger"><span>Is Draftable free?</span><div class="acc-icon">+</div></button>
+            <div class="accordion-body">Yes, Draftable is free to download and play on iOS.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-section" id="dr-room">
+        <h2 class="section-heading">Creating &amp; Joining a Room</h2>
+        <div class="accordion">
+          <div class="accordion-item">
+            <button class="accordion-trigger"><span>How do I create a room?</span><div class="acc-icon">+</div></button>
+            <div class="accordion-body">Open the app, tap "Create Room," enter your name, and you'll get a 4-letter room code. Share that code with your friends so they can join.</div>
+          </div>
+          <div class="accordion-item">
+            <button class="accordion-trigger"><span>How do others join?</span><div class="acc-icon">+</div></button>
+            <div class="accordion-body">Friends with the app tap "Join Room" and enter the 4-letter code the host shared. Everyone must be in the same room before the host can start the draft.</div>
+          </div>
+          <div class="accordion-item">
+            <button class="accordion-trigger"><span>What's the room code for?</span><div class="acc-icon">+</div></button>
+            <div class="accordion-body">The room code is a short 4-letter identifier (like XKEY or DRAFT) that connects all players to the same live game session. It's only valid while the session is active — rooms are automatically cleaned up after 3 hours.</div>
+          </div>
+          <div class="accordion-item">
+            <button class="accordion-trigger"><span>What happens if someone loses connection?</span><div class="acc-icon">+</div></button>
+            <div class="accordion-body">The room state is synced via Firebase in real time. If a player loses connection briefly, they can rejoin using the same room code and their state will be restored. If the host disconnects for an extended period, the room may eventually expire.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-section" id="dr-drafting">
+        <h2 class="section-heading">Drafting</h2>
+        <div class="accordion">
+          <div class="accordion-item">
+            <button class="accordion-trigger"><span>How does snake draft order work?</span><div class="acc-icon">+</div></button>
+            <div class="accordion-body">In a snake draft, the pick order reverses each round. If Player A picks first in Round 1, Player B picks first in Round 2, then the order reverses again. This ensures fair distribution across all rounds.</div>
+          </div>
+          <div class="accordion-item">
+            <button class="accordion-trigger"><span>How many picks does each player get?</span><div class="acc-icon">+</div></button>
+            <div class="accordion-body">The host can configure rounds (3–8 per player). The default is 4 rounds. With 3 players and 4 rounds, each player makes 4 picks for a total of 12 picks in the draft.</div>
+          </div>
+          <div class="accordion-item">
+            <button class="accordion-trigger"><span>How are categories chosen?</span><div class="acc-icon">+</div></button>
+            <div class="accordion-body">The host proposes a category (or uses the randomize button). All players vote to agree or disagree. If everyone agrees, the draft starts. If someone disagrees, a new category is proposed. Previously used categories are excluded from random suggestions.</div>
+          </div>
+          <div class="accordion-item">
+            <button class="accordion-trigger"><span>Can we play again with the same group?</span><div class="acc-icon">+</div></button>
+            <div class="accordion-body">Yes — the host can tap "Play Again" after the results screen. This resets the picks and category while keeping all players in the same room. A new category is chosen for the next round.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-section" id="dr-voting">
+        <h2 class="section-heading">Voting &amp; Results</h2>
+        <div class="accordion">
+          <div class="accordion-item">
+            <button class="accordion-trigger"><span>How does voting work?</span><div class="acc-icon">+</div></button>
+            <div class="accordion-body">After the draft, the host taps "Copy Poll Link" and pastes the link into their group chat. Anyone who receives the link can open it in a browser, enter their name, and vote for who they think drafted best. No app download needed.</div>
+          </div>
+          <div class="accordion-item">
+            <button class="accordion-trigger"><span>Do voters need to download the app?</span><div class="acc-icon">+</div></button>
+            <div class="accordion-body">No. The poll opens in any web browser. Voters just tap the link, see everyone's picks, enter their name, and vote. Results are live and update in real time.</div>
+          </div>
+          <div class="accordion-item">
+            <button class="accordion-trigger"><span>How long is the poll active?</span><div class="acc-icon">+</div></button>
+            <div class="accordion-body">Poll data is stored alongside the room and is automatically removed after 3 hours. Share the link and collect votes while the game is still fresh — results won't persist indefinitely.</div>
+          </div>
+          <div class="accordion-item">
+            <button class="accordion-trigger"><span>Can I see who voted for who?</span><div class="acc-icon">+</div></button>
+            <div class="accordion-body">Yes. The results page shows both the ranked leaderboard and a "Who Voted for Who" breakdown, so there's full transparency. No anonymous votes — each voter's name is shown next to their pick.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-section" id="dr-technical">
+        <h2 class="section-heading">Technical</h2>
+        <div class="accordion">
+          <div class="accordion-item">
+            <button class="accordion-trigger"><span>What iOS version is required?</span><div class="acc-icon">+</div></button>
+            <div class="accordion-body">Draftable requires iOS 16.0 or later.</div>
+          </div>
+          <div class="accordion-item">
+            <button class="accordion-trigger"><span>The poll link shows a white screen</span><div class="acc-icon">+</div></button>
+            <div class="accordion-body">The poll page is hosted at draftable-430eb.web.app. Make sure you have an active internet connection. If the issue persists, try opening the link in Safari or Chrome. If the room is more than 3 hours old, the poll data may have expired.</div>
+          </div>
+          <div class="accordion-item">
+            <button class="accordion-trigger"><span>How do I report a bug?</span><div class="acc-icon">+</div></button>
+            <div class="accordion-body">Email us at support@timestampgames.com with a description of what happened, your iOS version, and the room code if you have it. We aim to respond within 1–3 business days.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- TIMESTAMP PANEL -->
+    <div class="tab-panel" id="panel-timestamp">
+
+      <div class="faq-section" id="ts-getting-started">
+        <h2 class="section-heading">Getting Started</h2>
+        <div class="accordion">
+          <div class="accordion-item">
+            <button class="accordion-trigger"><span>What is TimeStamp!?</span><div class="acc-icon">+</div></button>
+            <div class="accordion-body">TimeStamp! is a memory game that uses your own photo library. A photo appears on screen with the date hidden — your job is to guess when it was taken, narrowing from year to month to day. You earn points based on accuracy, and can compete on daily leaderboards or play with friends.</div>
+          </div>
+          <div class="accordion-item">
+            <button class="accordion-trigger"><span>What devices is TimeStamp! available on?</span><div class="acc-icon">+</div></button>
+            <div class="accordion-body">TimeStamp! is coming soon to iPhone on iOS 16 and later. iPad support is planned for a future update.</div>
+          </div>
+          <div class="accordion-item">
+            <button class="accordion-trigger"><span>Does TimeStamp! access my photos?</span><div class="acc-icon">+</div></button>
+            <div class="accordion-body">TimeStamp! reads the timestamp metadata from photos in your library — the date and time they were taken. Your photos themselves never leave your device and are never uploaded to any server. You can revoke photo access at any time in iOS Settings → Privacy → Photos.</div>
+          </div>
+          <div class="accordion-item">
+            <button class="accordion-trigger"><span>Do I need an account?</span><div class="acc-icon">+</div></button>
+            <div class="accordion-body">No account is required for Practice Mode or group sessions. An Apple Game Center account is used for the Daily Challenge leaderboard. You can use the app without Game Center if you prefer.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-section" id="ts-gameplay">
+        <h2 class="section-heading">Gameplay &amp; Scoring</h2>
+        <div class="accordion">
+          <div class="accordion-item">
+            <button class="accordion-trigger"><span>How does scoring work?</span><div class="acc-icon">+</div></button>
+            <div class="accordion-body">You earn points progressively — first for guessing the correct year, then additional points for the month, then maximum points for the exact day. Getting close still earns partial credit. Each round is worth up to 1,000 points, with 5 rounds per game.</div>
+          </div>
+          <div class="accordion-item">
+            <button class="accordion-trigger"><span>How are photos selected?</span><div class="acc-icon">+</div></button>
+            <div class="accordion-body">Photos are selected randomly from your library for Practice Mode. Daily Challenge uses the same set of prompts for all players globally (without accessing your photos — a curated set). Group Mode uses a shared set drawn from the host's library.</div>
+          </div>
+          <div class="accordion-item">
+            <button class="accordion-trigger"><span>What if I don't have many photos?</span><div class="acc-icon">+</div></button>
+            <div class="accordion-body">You need at least a few photos spanning different dates for the game to work well. The app will let you know if your library doesn't have enough variety to generate rounds.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-section" id="ts-daily">
+        <h2 class="section-heading">Daily Challenge</h2>
+        <div class="accordion">
+          <div class="accordion-item">
+            <button class="accordion-trigger"><span>When does the Daily Challenge reset?</span><div class="acc-icon">+</div></button>
+            <div class="accordion-body">The Daily Challenge resets at midnight local time. Each day's challenge is the same for all players worldwide, enabling fair leaderboard competition.</div>
+          </div>
+          <div class="accordion-item">
+            <button class="accordion-trigger"><span>How does the leaderboard work?</span><div class="acc-icon">+</div></button>
+            <div class="accordion-body">Daily leaderboards are powered by Apple Game Center. Scores are submitted automatically after you complete the Daily Challenge. You can view Today's rankings, all-time high scores, and compare with friends via Game Center.</div>
+          </div>
+          <div class="accordion-item">
+            <button class="accordion-trigger"><span>Can I play the Daily Challenge more than once?</span><div class="acc-icon">+</div></button>
+            <div class="accordion-body">Each Daily Challenge can only be completed once per day. Your first submitted score is the one that counts. You can replay it in Practice Mode after completing it, but your score won't be updated on the leaderboard.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-section" id="ts-party">
+        <h2 class="section-heading">Party Mode</h2>
+        <div class="accordion">
+          <div class="accordion-item">
+            <button class="accordion-trigger"><span>How does Party Mode work?</span><div class="acc-icon">+</div></button>
+            <div class="accordion-body">One player hosts the session and shares their screen. Everyone takes turns guessing on the host's device. Scores are tallied across all players for the session. It's perfect for families, road trips, or gatherings.</div>
+          </div>
+          <div class="accordion-item">
+            <button class="accordion-trigger"><span>How many players can join a group session?</span><div class="acc-icon">+</div></button>
+            <div class="accordion-body">Up to 10 players can participate in a group session. Only the host device needs the app — everyone else participates verbally.</div>
+          </div>
+          <div class="accordion-item">
+            <button class="accordion-trigger"><span>What happens if the host disconnects?</span><div class="acc-icon">+</div></button>
+            <div class="accordion-body">In Party Mode, all game logic runs on the host's device locally. There's no network dependency — the session simply continues as long as the host's device is active.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-section" id="ts-privacy">
+        <h2 class="section-heading">Photos &amp; Privacy</h2>
+        <div class="accordion">
+          <div class="accordion-item">
+            <button class="accordion-trigger"><span>Are my photos uploaded anywhere?</span><div class="acc-icon">+</div></button>
+            <div class="accordion-body">No. TimeStamp! only reads the date/time metadata from your photos. Your actual photo images never leave your device and are never uploaded to any server or seen by us.</div>
+          </div>
+          <div class="accordion-item">
+            <button class="accordion-trigger"><span>How do I revoke photo access?</span><div class="acc-icon">+</div></button>
+            <div class="accordion-body">Go to iOS Settings → Privacy & Security → Photos → TimeStamp! and set access to "None." The app won't function without photo access, but you can revoke it at any time.</div>
+          </div>
+          <div class="accordion-item">
+            <button class="accordion-trigger"><span>What data does TimeStamp Games collect?</span><div class="acc-icon">+</div></button>
+            <div class="accordion-body">We collect anonymous usage analytics via Firebase to understand how the app is used (e.g., which modes are popular). No personally identifiable information is collected. See our Privacy Policy for full details.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-section" id="ts-account">
+        <h2 class="section-heading">Account &amp; Data</h2>
+        <div class="accordion">
+          <div class="accordion-item">
+            <button class="accordion-trigger"><span>Do I need a TimeStamp Games account?</span><div class="acc-icon">+</div></button>
+            <div class="accordion-body">No. TimeStamp! doesn't require an account. The Daily Challenge leaderboard optionally uses Apple Game Center — you can sign in or out of Game Center via iOS Settings.</div>
+          </div>
+          <div class="accordion-item">
+            <button class="accordion-trigger"><span>How do I delete my data?</span><div class="acc-icon">+</div></button>
+            <div class="accordion-body">Since TimeStamp! doesn't store personal data on our servers, deletion is simple: revoke photo access in iOS Settings and delete the app. Game Center data can be managed via your Apple ID settings. See our <a href="data-deletion.html" style="color:var(--ts-accent);">Data Deletion page</a> for full instructions.</div>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /timestamp panel -->
+
+    <!-- CONTACT -->
+    <div class="contact-section">
+      <h2>Still need help?</h2>
+      <p>Email us with your question, device info, and any relevant details. We read everything and respond within 1–3 business days.</p>
+      <a href="mailto:support@timestampgames.com" class="contact-email">
+        ✉ support@timestampgames.com
+      </a>
+      <p class="contact-note">For data deletion requests, please include "Data Deletion" in the subject line along with your game name and any relevant ID.</p>
+    </div>
+
+  </main>
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <span class="footer-copy">© 2026 TimeStamp Games</span>
+    <div class="footer-links">
+      <a href="mailto:support@timestampgames.com">support@timestampgames.com</a>
+      <a href="privacy-timestamp.html">Privacy (TimeStamp!)</a>
+      <a href="privacy-draftable.html">Privacy (Draftable)</a>
+      <a href="terms.html">Terms</a>
+      <a href="data-deletion.html">Data Deletion</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Tab switching
+  function switchTab(game, btn) {
+    document.querySelectorAll('.tab-btn').forEach(b => b.className = 'tab-btn');
+    document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+    btn.classList.add(game === 'draftable' ? 'active-dr' : 'active-ts');
+    document.getElementById('panel-' + game).classList.add('active');
+    buildSidebar(game);
+  }
+
+  // Accordion
+  document.addEventListener('click', e => {
+    const trigger = e.target.closest('.accordion-trigger');
+    if (!trigger) return;
+    const item = trigger.closest('.accordion-item');
+    const wasOpen = item.classList.contains('open');
+    // Close siblings
+    item.closest('.accordion').querySelectorAll('.accordion-item').forEach(i => i.classList.remove('open'));
+    if (!wasOpen) item.classList.add('open');
+  });
+
+  // Sidebar
+  const sidebarSections = {
+    draftable: [
+      { id: 'dr-getting-started', label: 'Getting Started' },
+      { id: 'dr-room',            label: 'Creating & Joining' },
+      { id: 'dr-drafting',        label: 'Drafting' },
+      { id: 'dr-voting',          label: 'Voting & Results' },
+      { id: 'dr-technical',       label: 'Technical' },
+    ],
+    timestamp: [
+      { id: 'ts-getting-started', label: 'Getting Started' },
+      { id: 'ts-gameplay',        label: 'Gameplay & Scoring' },
+      { id: 'ts-daily',           label: 'Daily Challenge' },
+      { id: 'ts-party',           label: 'Party Mode' },
+      { id: 'ts-privacy',         label: 'Photos & Privacy' },
+      { id: 'ts-account',         label: 'Account & Data' },
+    ]
+  };
+
+  function buildSidebar(game) {
+    const sidebar = document.getElementById('sidebar');
+    sidebar.innerHTML = '';
+    sidebarSections[game].forEach((s, i) => {
+      const btn = document.createElement('button');
+      btn.className = 'sidebar-link' + (i === 0 ? ' active' : '');
+      btn.textContent = s.label;
+      btn.onclick = () => {
+        document.querySelectorAll('.sidebar-link').forEach(l => l.classList.remove('active'));
+        btn.classList.add('active');
+        document.getElementById(s.id)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      };
+      sidebar.appendChild(btn);
+    });
+  }
+
+  buildSidebar('draftable');
+</script>
+</body>
+</html>

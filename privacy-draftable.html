@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Privacy Policy — Draftable — TimeStamp Games</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root { --cream: #F7F5F2; --ink: #111110; --muted: #6B6860; --rule: #E0DDD8; --dr-cyan: #00D4FF; --dr-purple: #a855f7; }
+    body { background: var(--cream); color: var(--ink); font-family: 'DM Sans', sans-serif; line-height: 1.7; overflow-x: hidden; }
+    body::before {
+      content: ''; position: fixed; inset: 0; pointer-events: none; z-index: 9999; opacity: 0.025;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.4'/%3E%3C/svg%3E");
+    }
+    nav { position: sticky; top: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 0 40px; height: 64px; background: rgba(247,245,242,0.92); backdrop-filter: blur(12px); border-bottom: 1px solid var(--rule); }
+    .wordmark { font-family: 'Instrument Serif', serif; font-size: 1.25rem; color: var(--ink); text-decoration: none; }
+    .nav-links { display: flex; align-items: center; gap: 36px; }
+    .nav-links a, .nav-links .dropdown > span { font-size: 0.875rem; font-weight: 500; color: var(--muted); text-decoration: none; cursor: pointer; transition: color 0.2s; }
+    .nav-links a:hover, .nav-links .dropdown:hover > span { color: var(--ink); }
+    .dropdown { position: relative; }
+    .dropdown-menu { display: none; position: absolute; top: calc(100% + 12px); right: 0; background: #fff; border: 1px solid var(--rule); border-radius: 10px; overflow: hidden; min-width: 160px; box-shadow: 0 8px 24px rgba(17,17,16,0.08); }
+    .dropdown:hover .dropdown-menu { display: block; }
+    .dropdown-menu a { display: block; padding: 10px 16px; font-size: 0.875rem; color: var(--ink) !important; text-decoration: none; transition: background 0.15s; }
+    .dropdown-menu a:hover { background: var(--cream); }
+
+    .doc-wrap { max-width: 720px; margin: 0 auto; padding: 72px 40px 100px; }
+
+    .doc-game-badge {
+      display: inline-flex; align-items: center; gap: 6px;
+      font-size: 0.7rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase;
+      padding: 5px 12px; border-radius: 20px; margin-bottom: 20px;
+      background: rgba(0,212,255,0.1); color: #0ea5c5; border: 1px solid rgba(0,212,255,0.25);
+    }
+
+    .doc-wrap h1 { font-family: 'Instrument Serif', serif; font-size: clamp(2rem, 4vw, 2.8rem); letter-spacing: -0.025em; line-height: 1.1; margin-bottom: 12px; }
+    .doc-meta { font-size: 0.85rem; color: var(--muted); margin-bottom: 48px; padding-bottom: 32px; border-bottom: 1px solid var(--rule); }
+
+    .doc-wrap h2 { font-family: 'Instrument Serif', serif; font-size: 1.3rem; letter-spacing: -0.01em; color: var(--ink); margin: 40px 0 12px; }
+    .doc-wrap h3 { font-size: 0.95rem; font-weight: 600; color: var(--ink); margin: 24px 0 8px; }
+    .doc-wrap p { font-size: 0.95rem; color: var(--muted); margin-bottom: 14px; }
+    .doc-wrap ul { padding-left: 20px; margin-bottom: 14px; }
+    .doc-wrap ul li { font-size: 0.95rem; color: var(--muted); margin-bottom: 6px; }
+    .doc-wrap a { color: #0ea5c5; text-decoration: none; }
+    .doc-wrap a:hover { text-decoration: underline; }
+
+    .highlight-box {
+      background: rgba(0,212,255,0.05); border: 1px solid rgba(0,212,255,0.2);
+      border-radius: 12px; padding: 18px 20px; margin: 24px 0;
+    }
+    .highlight-box p { margin: 0; color: var(--ink); font-weight: 500; font-size: 0.9rem; }
+
+    .data-table { width: 100%; border-collapse: collapse; margin: 20px 0; font-size: 0.875rem; }
+    .data-table th { text-align: left; padding: 10px 14px; background: rgba(17,17,16,0.04); font-weight: 600; font-size: 0.75rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); border-bottom: 1px solid var(--rule); }
+    .data-table td { padding: 12px 14px; border-bottom: 1px solid var(--rule); color: var(--muted); vertical-align: top; }
+    .data-table tr:last-child td { border-bottom: none; }
+
+    footer { padding: 40px; border-top: 1px solid var(--rule); }
+    .footer-inner { max-width: 720px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px; }
+    .footer-copy { font-size: 0.8rem; color: var(--muted); }
+    .footer-links { display: flex; flex-wrap: wrap; gap: 20px; }
+    .footer-links a { font-size: 0.8rem; color: var(--muted); text-decoration: none; transition: color 0.2s; }
+    .footer-links a:hover { color: var(--ink); }
+
+    @media (max-width: 700px) { nav { padding: 0 20px; } .doc-wrap { padding: 48px 20px 60px; } footer { padding: 28px 20px; } .footer-inner { flex-direction: column; align-items: flex-start; } }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="wordmark">TimeStamp Games</a>
+  <div class="nav-links">
+    <div class="dropdown">
+      <span>Privacy ▾</span>
+      <div class="dropdown-menu">
+        <a href="privacy-timestamp.html">TimeStamp!</a>
+        <a href="privacy-draftable.html">Draftable</a>
+      </div>
+    </div>
+    <a href="support.html">Support</a>
+    <a href="terms.html">Terms</a>
+  </div>
+</nav>
+
+<div class="doc-wrap">
+  <span class="doc-game-badge">Draftable</span>
+  <h1>Privacy Policy</h1>
+  <p class="doc-meta">Effective Date: March 2026 &nbsp;·&nbsp; Andrew Maxwell, d/b/a Andrew Maxwell &nbsp;·&nbsp; <a href="mailto:support@timestampgames.com">support@timestampgames.com</a></p>
+
+  <div class="highlight-box">
+    <p>🗳️ Draftable requires no account, accesses no photos, and stores only minimal game data temporarily. All room data is automatically deleted after 3 hours.</p>
+  </div>
+
+  <h2>1. About This Policy</h2>
+  <p>This Privacy Policy describes how Andrew Maxwell ("we," "us," or "our") handles information in connection with the Draftable iOS app and its companion web poll feature. We are committed to minimal data collection and full transparency.</p>
+
+  <h2>2. What Draftable Collects</h2>
+  <p>Draftable is a real-time multiplayer game. To enable live gameplay between players, we store the following data temporarily in Firebase Realtime Database:</p>
+
+  <table class="data-table">
+    <thead>
+      <tr>
+        <th>Data Type</th>
+        <th>What It Is</th>
+        <th>Retention</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Player names</strong></td>
+        <td>The display name you enter when creating or joining a room (e.g., "Andrew")</td>
+        <td>Deleted automatically after 3 hours</td>
+      </tr>
+      <tr>
+        <td><strong>Draft picks</strong></td>
+        <td>The text picks each player enters during the draft (e.g., "Michael Jordan")</td>
+        <td>Deleted automatically after 3 hours</td>
+      </tr>
+      <tr>
+        <td><strong>Category</strong></td>
+        <td>The draft category chosen by the room (e.g., "Greatest NBA Players")</td>
+        <td>Deleted automatically after 3 hours</td>
+      </tr>
+      <tr>
+        <td><strong>Votes</strong></td>
+        <td>Who each voter voted for, associated with the voter's self-entered name</td>
+        <td>Deleted automatically after 3 hours</td>
+      </tr>
+      <tr>
+        <td><strong>Room code</strong></td>
+        <td>A 4-letter code used to connect players to the same session</td>
+        <td>Deleted automatically after 3 hours</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p>All room data — including picks, votes, player names, and category — is stored under a unique room code and automatically purged after 3 hours. We do not archive or retain this data beyond that window.</p>
+
+  <h2>3. What Draftable Does NOT Collect</h2>
+  <ul>
+    <li>Email addresses or contact information</li>
+    <li>Device location or GPS data</li>
+    <li>Photos or camera access</li>
+    <li>Contacts or address book</li>
+    <li>Health or biometric data</li>
+    <li>Financial or payment information</li>
+    <li>Persistent user accounts or profiles</li>
+  </ul>
+
+  <h2>4. The Web Poll Feature</h2>
+  <p>After a draft is complete, the host can share a poll link. Anyone who receives this link can open it in a web browser to view the draft results and vote — no app download required.</p>
+
+  <h3>What the poll link contains</h3>
+  <p>The poll link encodes the draft data (player names, picks, category, and a unique poll ID) as URL parameters. This data is stored in Firebase and is the same data covered in Section 2 above. The link is readable by anyone who receives it — consider this when sharing.</p>
+
+  <h3>Voter names</h3>
+  <p>When someone votes via the web poll, they enter a display name. This name is stored alongside their vote in Firebase and is visible to all players on the results page ("Who Voted for Who"). Voter names are subject to the same 3-hour automatic deletion.</p>
+
+  <h2>5. Firebase (Data Infrastructure)</h2>
+  <p>Draftable uses Firebase Realtime Database (provided by Google) to sync game state between players in real time. Firebase processes data according to <a href="https://firebase.google.com/support/privacy" target="_blank">Google's Privacy Policy</a>. All Firebase data is transmitted over encrypted (HTTPS/TLS) connections.</p>
+  <p>The Firebase project is located in the United States. By playing Draftable, you consent to your temporary game data being processed in the US.</p>
+
+  <h2>6. Data Sharing</h2>
+  <p>We do not sell, rent, or share your data with third parties for marketing or advertising purposes. Game data is shared only with:</p>
+  <ul>
+    <li><strong>Firebase / Google</strong> — to power real-time multiplayer sync (see above)</li>
+    <li><strong>Other players in your room</strong> — player names, picks, and votes are visible to all participants in a game session by design</li>
+    <li><strong>Anyone with the poll link</strong> — draft results and voter names are visible to all recipients of the shared poll link</li>
+    <li><strong>Legal authorities</strong> — if required by applicable law</li>
+  </ul>
+
+  <h2>7. Children's Privacy</h2>
+  <p>Draftable is not directed at children under 13. We do not knowingly collect personal information from children under 13. If you believe a child under 13 has provided information through our app, contact us at <a href="mailto:support@timestampgames.com">support@timestampgames.com</a> and we will take appropriate action.</p>
+
+  <h2>8. Data Deletion</h2>
+  <p>All game data is automatically deleted after 3 hours. No action is required on your part. If you need data deleted immediately (e.g., a specific poll), email us at <a href="mailto:support@timestampgames.com">support@timestampgames.com</a> with the poll ID and we will delete it manually. See our <a href="data-deletion.html">Data Deletion page</a> for full instructions.</p>
+
+  <h2>9. Security</h2>
+  <p>All data is transmitted over encrypted connections (HTTPS/TLS). Firebase access is controlled by security rules that restrict read/write access to valid room and poll IDs. We do not store passwords or sensitive personal information.</p>
+
+  <h2>10. Changes to This Policy</h2>
+  <p>We may update this Privacy Policy from time to time. Material changes will be reflected in an updated "Effective Date" at the top of this page. Continued use of Draftable after changes constitutes acceptance of the revised policy.</p>
+
+  <h2>11. Contact Us</h2>
+  <p>If you have questions or concerns about this Privacy Policy, please contact us:</p>
+  <p><strong>Email:</strong> <a href="mailto:support@timestampgames.com">support@timestampgames.com</a><br>
+  <strong>Company:</strong> Andrew Maxwell, d/b/a Andrew Maxwell</p>
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <span class="footer-copy">© 2026 TimeStamp Games</span>
+    <div class="footer-links">
+      <a href="mailto:support@timestampgames.com">support@timestampgames.com</a>
+      <a href="privacy-timestamp.html">Privacy (TimeStamp!)</a>
+      <a href="privacy-draftable.html">Privacy (Draftable)</a>
+      <a href="terms.html">Terms</a>
+      <a href="data-deletion.html">Data Deletion</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Data Deletion — TimeStamp Games</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root { --cream: #F7F5F2; --ink: #111110; --muted: #6B6860; --rule: #E0DDD8; --ts-accent: #D97706; --dr-cyan: #00D4FF; }
+    body { background: var(--cream); color: var(--ink); font-family: 'DM Sans', sans-serif; line-height: 1.7; overflow-x: hidden; }
+    body::before {
+      content: ''; position: fixed; inset: 0; pointer-events: none; z-index: 9999; opacity: 0.025;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.4'/%3E%3C/svg%3E");
+    }
+    nav { position: sticky; top: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 0 40px; height: 64px; background: rgba(247,245,242,0.92); backdrop-filter: blur(12px); border-bottom: 1px solid var(--rule); }
+    .wordmark { font-family: 'Instrument Serif', serif; font-size: 1.25rem; color: var(--ink); text-decoration: none; }
+    .nav-links { display: flex; align-items: center; gap: 36px; }
+    .nav-links a, .nav-links .dropdown > span { font-size: 0.875rem; font-weight: 500; color: var(--muted); text-decoration: none; cursor: pointer; transition: color 0.2s; }
+    .nav-links a:hover, .nav-links .dropdown:hover > span { color: var(--ink); }
+    .dropdown { position: relative; }
+    .dropdown-menu { display: none; position: absolute; top: calc(100% + 12px); right: 0; background: #fff; border: 1px solid var(--rule); border-radius: 10px; overflow: hidden; min-width: 160px; box-shadow: 0 8px 24px rgba(17,17,16,0.08); }
+    .dropdown:hover .dropdown-menu { display: block; }
+    .dropdown-menu a { display: block; padding: 10px 16px; font-size: 0.875rem; color: var(--ink) !important; text-decoration: none; transition: background 0.15s; }
+    .dropdown-menu a:hover { background: var(--cream); }
+
+    .doc-wrap { max-width: 720px; margin: 0 auto; padding: 72px 40px 100px; }
+    .doc-wrap h1 { font-family: 'Instrument Serif', serif; font-size: clamp(2rem, 4vw, 2.8rem); letter-spacing: -0.025em; line-height: 1.1; margin-bottom: 12px; }
+    .doc-meta { font-size: 0.85rem; color: var(--muted); margin-bottom: 48px; padding-bottom: 32px; border-bottom: 1px solid var(--rule); }
+    .doc-wrap a { text-decoration: none; }
+    .doc-wrap a:hover { text-decoration: underline; }
+
+    /* Game section cards */
+    .game-section {
+      border: 1px solid var(--rule); border-radius: 16px; overflow: hidden; margin-bottom: 32px;
+    }
+
+    .game-section-header {
+      display: flex; align-items: center; gap: 12px;
+      padding: 20px 24px; border-bottom: 1px solid var(--rule);
+    }
+
+    .game-section-header h2 {
+      font-family: 'Instrument Serif', serif; font-size: 1.4rem; letter-spacing: -0.01em;
+    }
+
+    .badge {
+      font-size: 0.65rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase;
+      padding: 4px 10px; border-radius: 20px;
+    }
+
+    .badge-ts { background: rgba(217,119,6,0.1); color: var(--ts-accent); border: 1px solid rgba(217,119,6,0.25); }
+    .badge-dr { background: rgba(0,212,255,0.1); color: #0ea5c5; border: 1px solid rgba(0,212,255,0.25); }
+
+    .game-section-body { padding: 24px; }
+
+    .data-stored {
+      background: rgba(17,17,16,0.03); border-radius: 10px; padding: 14px 16px;
+      margin-bottom: 24px; font-size: 0.875rem; color: var(--muted);
+    }
+    .data-stored strong { color: var(--ink); display: block; margin-bottom: 6px; font-size: 0.8rem; letter-spacing: 0.04em; text-transform: uppercase; }
+
+    /* Steps */
+    .steps { display: flex; flex-direction: column; gap: 0; }
+
+    .step {
+      display: flex; gap: 16px; padding: 18px 0;
+      border-bottom: 1px solid var(--rule);
+    }
+    .step:last-child { border-bottom: none; }
+
+    .step-num {
+      width: 28px; height: 28px; border-radius: 50%; flex-shrink: 0;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.75rem; font-weight: 700;
+      background: var(--ink); color: #fff; margin-top: 2px;
+    }
+
+    .step-content h3 { font-size: 0.9rem; font-weight: 600; color: var(--ink); margin-bottom: 4px; }
+    .step-content p { font-size: 0.875rem; color: var(--muted); line-height: 1.6; margin: 0; }
+    .step-content code {
+      display: inline-block; background: rgba(17,17,16,0.07); padding: 1px 6px;
+      border-radius: 4px; font-size: 0.8rem; font-family: monospace; color: var(--ink);
+    }
+
+    /* Auto-delete notice */
+    .auto-badge {
+      display: inline-flex; align-items: center; gap: 6px;
+      font-size: 0.75rem; font-weight: 600; padding: 5px 12px; border-radius: 20px;
+      background: rgba(16,185,129,0.1); color: #059669; border: 1px solid rgba(16,185,129,0.2);
+      margin-bottom: 16px;
+    }
+
+    /* Contact CTA */
+    .contact-cta {
+      background: var(--ink); color: #fff; border-radius: 16px; padding: 36px;
+      margin-top: 40px; display: flex; align-items: center; justify-content: space-between; gap: 24px; flex-wrap: wrap;
+    }
+    .contact-cta h2 { font-family: 'Instrument Serif', serif; font-size: 1.4rem; margin-bottom: 6px; }
+    .contact-cta p { font-size: 0.875rem; color: rgba(255,255,255,0.5); }
+    .contact-btn {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.15);
+      padding: 12px 20px; border-radius: 10px; color: #fff; text-decoration: none;
+      font-weight: 600; font-size: 0.875rem; white-space: nowrap; transition: background 0.2s;
+    }
+    .contact-btn:hover { background: rgba(255,255,255,0.18); }
+
+    footer { padding: 40px; border-top: 1px solid var(--rule); }
+    .footer-inner { max-width: 720px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px; }
+    .footer-copy { font-size: 0.8rem; color: var(--muted); }
+    .footer-links { display: flex; flex-wrap: wrap; gap: 20px; }
+    .footer-links a { font-size: 0.8rem; color: var(--muted); text-decoration: none; transition: color 0.2s; }
+    .footer-links a:hover { color: var(--ink); }
+
+    @media (max-width: 700px) { nav { padding: 0 20px; } .doc-wrap { padding: 48px 20px 60px; } footer { padding: 28px 20px; } .footer-inner { flex-direction: column; align-items: flex-start; } .contact-cta { flex-direction: column; } }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="wordmark">TimeStamp Games</a>
+  <div class="nav-links">
+    <div class="dropdown">
+      <span>Privacy ▾</span>
+      <div class="dropdown-menu">
+        <a href="privacy-timestamp.html">TimeStamp!</a>
+        <a href="privacy-draftable.html">Draftable</a>
+      </div>
+    </div>
+    <a href="support.html">Support</a>
+    <a href="terms.html">Terms</a>
+  </div>
+</nav>
+
+<div class="doc-wrap">
+  <h1>Data Deletion</h1>
+  <p class="doc-meta">Andrew Maxwell is committed to minimal data collection. Here's exactly what each app stores and how to remove it.</p>
+
+  <!-- TIMESTAMP -->
+  <div class="game-section">
+    <div class="game-section-header">
+      <h2>TimeStamp!</h2>
+      <span class="badge badge-ts">Coming Soon</span>
+    </div>
+    <div class="game-section-body">
+
+      <div class="data-stored">
+        <strong>What TimeStamp! Stores</strong>
+        TimeStamp! does not upload your photos or store personal data on any server. The only external data is anonymous usage analytics (Firebase) and optional Game Center leaderboard scores (Apple). No account is created.
+      </div>
+
+      <div class="steps">
+        <div class="step">
+          <div class="step-num">1</div>
+          <div class="step-content">
+            <h3>Revoke Photo Access</h3>
+            <p>Go to <code>Settings → Privacy & Security → Photos → TimeStamp!</code> and set access to <strong>None</strong>. The app will no longer be able to read any photo data from your device.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">2</div>
+          <div class="step-content">
+            <h3>Delete the App</h3>
+            <p>Long-press the TimeStamp! icon on your home screen → <strong>Remove App → Delete App</strong>. This removes the app and all locally stored data (settings, cached scores) from your device.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">3</div>
+          <div class="step-content">
+            <h3>Remove Game Center Data (Optional)</h3>
+            <p>If you participated in the Daily Challenge leaderboard, your scores are stored by Apple under your Game Center account. To manage or delete this data, visit <code>Settings → [Your Name] → Game Center</code> and sign out, or contact Apple Support to remove Game Center data.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">4</div>
+          <div class="step-content">
+            <h3>Analytics (Automatic)</h3>
+            <p>Anonymous Firebase Analytics data is not linked to your identity and cannot be individually deleted. It is retained according to Google's standard retention schedule and automatically expires.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- DRAFTABLE -->
+  <div class="game-section">
+    <div class="game-section-header">
+      <h2>Draftable</h2>
+      <span class="badge badge-dr">Available Now</span>
+    </div>
+    <div class="game-section-body">
+
+      <span class="auto-badge">✓ Auto-deleted after 3 hours</span>
+
+      <div class="data-stored">
+        <strong>What Draftable Stores</strong>
+        Player names, draft picks, vote choices, and room data are stored temporarily in Firebase Realtime Database while a game is active. All data is automatically and permanently deleted 3 hours after the room is created. No accounts are created and no data persists beyond that window.
+      </div>
+
+      <div class="steps">
+        <div class="step">
+          <div class="step-num">1</div>
+          <div class="step-content">
+            <h3>Wait — Data Auto-Deletes After 3 Hours</h3>
+            <p>In most cases, you don't need to do anything. All room data, picks, and votes are automatically and permanently purged from Firebase 3 hours after the room was created. Nothing persists after that point.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">2</div>
+          <div class="step-content">
+            <h3>Request Immediate Deletion</h3>
+            <p>If you need a specific game's data deleted before the 3-hour window, email us at <a href="mailto:support@timestampgames.com" style="color:#0ea5c5;">support@timestampgames.com</a> with the subject line <strong>"Data Deletion — Draftable"</strong> and include the room code or poll link URL. We will delete the data manually within 24 hours.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">3</div>
+          <div class="step-content">
+            <h3>Delete the App</h3>
+            <p>Long-press the Draftable icon → <strong>Remove App → Delete App</strong>. Since Draftable stores no data locally beyond app state, deleting the app removes everything on-device. Any active room data in Firebase will still auto-expire after 3 hours.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CONTACT CTA -->
+  <div class="contact-cta">
+    <div>
+      <h2>Need help?</h2>
+      <p>Email us for any data requests — we respond within 1–3 business days.</p>
+    </div>
+    <a href="mailto:support@timestampgames.com?subject=Data%20Deletion%20Request" class="contact-btn">
+      ✉ support@timestampgames.com
+    </a>
+  </div>
+
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <span class="footer-copy">© 2026 TimeStamp Games</span>
+    <div class="footer-links">
+      <a href="mailto:support@timestampgames.com">support@timestampgames.com</a>
+      <a href="privacy-timestamp.html">Privacy (TimeStamp!)</a>
+      <a href="privacy-draftable.html">Privacy (Draftable)</a>
+      <a href="terms.html">Terms</a>
+      <a href="data-deletion.html">Data Deletion</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
