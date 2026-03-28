@@ -6,60 +6,80 @@
   <title>Privacy Policy — TimeStamp! — TimeStamp Games</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    :root { --cream: #F7F5F2; --ink: #111110; --muted: #6B6860; --rule: #E0DDD8; --ts-accent: #D97706; }
-    body { background: var(--cream); color: var(--ink); font-family: 'DM Sans', sans-serif; line-height: 1.7; overflow-x: hidden; }
-    body::before {
-      content: ''; position: fixed; inset: 0; pointer-events: none; z-index: 9999; opacity: 0.025;
-      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.4'/%3E%3C/svg%3E");
+    :root {
+      --bg: #FAFAF7; --bg2: #F4F4F0; --surface: #FFFFFF; --ink: #111110;
+      --muted: #717170; --faint: #9E9E9C; --rule: #E4E4DF;
+      --ts: #f97316; --ts-light: rgba(249,115,22,0.08); --ts-border: rgba(249,115,22,0.22);
     }
-    nav { position: sticky; top: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 0 40px; height: 64px; background: rgba(247,245,242,0.92); backdrop-filter: blur(12px); border-bottom: 1px solid var(--rule); }
-    .wordmark { font-family: 'Instrument Serif', serif; font-size: 1.25rem; color: var(--ink); text-decoration: none; }
-    .nav-links { display: flex; align-items: center; gap: 36px; }
-    .nav-links a, .nav-links .dropdown > span { font-size: 0.875rem; font-weight: 500; color: var(--muted); text-decoration: none; cursor: pointer; transition: color 0.2s; }
+    html { scroll-behavior: smooth; }
+    body { background: var(--bg); color: var(--ink); font-family: 'Manrope', sans-serif; line-height: 1.75; overflow-x: hidden; }
+    body::after {
+      content: ''; position: fixed; inset: 0; pointer-events: none; z-index: 9999; opacity: 0.022;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.5'/%3E%3C/svg%3E");
+    }
+
+    nav {
+      position: sticky; top: 0; z-index: 200;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 48px; height: 62px;
+      background: rgba(250,250,247,0.92); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--rule);
+    }
+    .wordmark { font-family: 'Syne', sans-serif; font-weight: 800; font-size: 1rem; color: var(--ink); text-decoration: none; letter-spacing: 0.02em; text-transform: uppercase; }
+    .nav-links { display: flex; align-items: center; gap: 32px; }
+    .nav-links a, .nav-links .dropdown > span { font-size: 0.82rem; font-weight: 500; color: var(--muted); text-decoration: none; cursor: pointer; transition: color 0.2s; }
     .nav-links a:hover, .nav-links .dropdown:hover > span { color: var(--ink); }
     .dropdown { position: relative; }
-    .dropdown-menu { display: none; position: absolute; top: calc(100% + 12px); right: 0; background: #fff; border: 1px solid var(--rule); border-radius: 10px; overflow: hidden; min-width: 160px; box-shadow: 0 8px 24px rgba(17,17,16,0.08); }
+    .dropdown-menu { display: none; position: absolute; top: calc(100% + 12px); right: 0; background: var(--surface); border: 1px solid var(--rule); border-radius: 12px; overflow: hidden; min-width: 168px; box-shadow: 0 8px 32px rgba(17,17,16,0.08); }
     .dropdown:hover .dropdown-menu { display: block; }
-    .dropdown-menu a { display: block; padding: 10px 16px; font-size: 0.875rem; color: var(--ink) !important; text-decoration: none; transition: background 0.15s; }
-    .dropdown-menu a:hover { background: var(--cream); }
+    .dropdown-menu a { display: block; padding: 11px 18px; font-size: 0.82rem; font-weight: 500; color: var(--muted) !important; text-decoration: none; transition: background 0.15s, color 0.15s; }
+    .dropdown-menu a:hover { background: var(--bg2); color: var(--ink) !important; }
 
-    .doc-wrap { max-width: 720px; margin: 0 auto; padding: 72px 40px 100px; }
+    .doc-wrap { max-width: 720px; margin: 0 auto; padding: 72px 48px 100px; }
 
     .doc-game-badge {
       display: inline-flex; align-items: center; gap: 6px;
-      font-size: 0.7rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase;
-      padding: 5px 12px; border-radius: 20px; margin-bottom: 20px;
-      background: rgba(217,119,6,0.1); color: var(--ts-accent); border: 1px solid rgba(217,119,6,0.25);
+      font-family: 'Syne', sans-serif; font-size: 0.63rem; font-weight: 700;
+      letter-spacing: 0.14em; text-transform: uppercase;
+      padding: 5px 13px; border-radius: 100px; margin-bottom: 20px;
+      background: var(--ts-light); color: var(--ts); border: 1px solid var(--ts-border);
     }
 
-    .doc-wrap h1 { font-family: 'Instrument Serif', serif; font-size: clamp(2rem, 4vw, 2.8rem); letter-spacing: -0.025em; line-height: 1.1; margin-bottom: 12px; }
-    .doc-meta { font-size: 0.85rem; color: var(--muted); margin-bottom: 48px; padding-bottom: 32px; border-bottom: 1px solid var(--rule); }
+    .doc-wrap h1 { font-family: 'Syne', sans-serif; font-size: clamp(2rem, 4vw, 2.8rem); font-weight: 800; letter-spacing: -0.035em; line-height: 1.05; margin-bottom: 14px; }
+    .doc-meta { font-size: 0.85rem; color: var(--faint); margin-bottom: 52px; padding-bottom: 32px; border-bottom: 1px solid var(--rule); line-height: 1.6; }
+    .doc-meta a { color: var(--muted); text-decoration: underline; text-underline-offset: 2px; }
 
-    .doc-wrap h2 { font-family: 'Instrument Serif', serif; font-size: 1.3rem; letter-spacing: -0.01em; color: var(--ink); margin: 40px 0 12px; }
-    .doc-wrap h3 { font-size: 0.95rem; font-weight: 600; color: var(--ink); margin: 24px 0 8px; }
+    .doc-wrap h2 { font-family: 'Syne', sans-serif; font-size: 1.1rem; font-weight: 800; letter-spacing: -0.02em; color: var(--ink); margin: 44px 0 14px; }
+    .doc-wrap h3 { font-size: 0.95rem; font-weight: 700; color: var(--ink); margin: 28px 0 10px; }
     .doc-wrap p { font-size: 0.95rem; color: var(--muted); margin-bottom: 14px; }
-    .doc-wrap ul { padding-left: 20px; margin-bottom: 14px; }
-    .doc-wrap ul li { font-size: 0.95rem; color: var(--muted); margin-bottom: 6px; }
-    .doc-wrap a { color: var(--ts-accent); text-decoration: none; }
+    .doc-wrap ul { padding-left: 22px; margin-bottom: 14px; }
+    .doc-wrap ul li { font-size: 0.95rem; color: var(--muted); margin-bottom: 8px; }
+    .doc-wrap a { color: var(--ts); text-decoration: none; }
     .doc-wrap a:hover { text-decoration: underline; }
+    .doc-wrap strong { color: var(--ink); font-weight: 600; }
 
     .highlight-box {
-      background: rgba(217,119,6,0.06); border: 1px solid rgba(217,119,6,0.18);
-      border-radius: 12px; padding: 18px 20px; margin: 24px 0;
+      background: var(--ts-light); border: 1px solid var(--ts-border);
+      border-radius: 14px; padding: 18px 20px; margin: 28px 0;
     }
-    .highlight-box p { margin: 0; color: var(--ink); font-weight: 500; font-size: 0.9rem; }
+    .highlight-box p { margin: 0; color: var(--ink); font-weight: 600; font-size: 0.92rem; }
 
-    footer { padding: 40px; border-top: 1px solid var(--rule); }
+    footer { border-top: 1px solid var(--rule); padding: 40px 48px; }
     .footer-inner { max-width: 720px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px; }
-    .footer-copy { font-size: 0.8rem; color: var(--muted); }
+    .footer-copy { font-size: 0.8rem; color: var(--faint); }
     .footer-links { display: flex; flex-wrap: wrap; gap: 20px; }
-    .footer-links a { font-size: 0.8rem; color: var(--muted); text-decoration: none; transition: color 0.2s; }
+    .footer-links a { font-size: 0.8rem; color: var(--faint); text-decoration: none; transition: color 0.2s; }
     .footer-links a:hover { color: var(--ink); }
 
-    @media (max-width: 700px) { nav { padding: 0 20px; } .doc-wrap { padding: 48px 20px 60px; } footer { padding: 28px 20px; } .footer-inner { flex-direction: column; align-items: flex-start; } }
+    @media (max-width: 700px) {
+      nav { padding: 0 20px; } .nav-links { gap: 20px; }
+      .doc-wrap { padding: 48px 20px 60px; }
+      footer { padding: 28px 20px; }
+      .footer-inner { flex-direction: column; align-items: flex-start; }
+    }
   </style>
 </head>
 <body>
@@ -80,7 +100,7 @@
 </nav>
 
 <div class="doc-wrap">
-  <span class="doc-game-badge">TimeStamp!</span>
+  <span class="doc-game-badge">● TimeStamp!</span>
   <h1>Privacy Policy</h1>
   <p class="doc-meta">Effective Date: March 3, 2026 &nbsp;·&nbsp; Andrew Maxwell, d/b/a Andrew Maxwell &nbsp;·&nbsp; <a href="mailto:support@timestampgames.com">support@timestampgames.com</a></p>
 
@@ -169,7 +189,7 @@
 
 <footer>
   <div class="footer-inner">
-    <span class="footer-copy">© 2026 TimeStamp Games</span>
+    <span class="footer-copy">© 2026 Andrew Maxwell</span>
     <div class="footer-links">
       <a href="mailto:support@timestampgames.com">support@timestampgames.com</a>
       <a href="privacy-timestamp.html">Privacy (TimeStamp!)</a>

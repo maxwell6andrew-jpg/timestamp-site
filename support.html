@@ -6,130 +6,108 @@
   <title>Support — TimeStamp Games</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     :root {
-      --cream: #F7F5F2; --ink: #111110; --muted: #6B6860; --rule: #E0DDD8;
-      --ts-accent: #D97706; --dr-cyan: #00D4FF; --dr-purple: #a855f7; --dr-dark: #0d0d12;
+      --bg: #FAFAF7; --bg2: #F4F4F0; --surface: #FFFFFF; --ink: #111110;
+      --muted: #717170; --faint: #9E9E9C; --rule: #E4E4DF;
+      --dr: #7c3aed; --dr-light: rgba(124,58,237,0.08); --dr-border: rgba(124,58,237,0.22);
+      --ts: #f97316; --ts-light: rgba(249,115,22,0.08); --ts-border: rgba(249,115,22,0.22);
     }
-    body { background: var(--cream); color: var(--ink); font-family: 'DM Sans', sans-serif; line-height: 1.6; overflow-x: hidden; }
-    body::before {
-      content: ''; position: fixed; inset: 0; pointer-events: none; z-index: 9999; opacity: 0.025;
-      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.4'/%3E%3C/svg%3E");
+    html { scroll-behavior: smooth; }
+    body { background: var(--bg); color: var(--ink); font-family: 'Manrope', sans-serif; line-height: 1.6; overflow-x: hidden; }
+    body::after {
+      content: ''; position: fixed; inset: 0; pointer-events: none; z-index: 9999; opacity: 0.022;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.5'/%3E%3C/svg%3E");
     }
 
     nav {
-      position: sticky; top: 0; z-index: 100;
+      position: sticky; top: 0; z-index: 200;
       display: flex; align-items: center; justify-content: space-between;
-      padding: 0 40px; height: 64px;
-      background: rgba(247,245,242,0.92); backdrop-filter: blur(12px);
+      padding: 0 48px; height: 62px;
+      background: rgba(250,250,247,0.92); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
       border-bottom: 1px solid var(--rule);
     }
-    .wordmark { font-family: 'Instrument Serif', serif; font-size: 1.25rem; color: var(--ink); text-decoration: none; }
-    .nav-links { display: flex; align-items: center; gap: 36px; }
-    .nav-links a, .nav-links .dropdown > span { font-size: 0.875rem; font-weight: 500; color: var(--muted); text-decoration: none; cursor: pointer; transition: color 0.2s; }
+    .wordmark { font-family: 'Syne', sans-serif; font-weight: 800; font-size: 1rem; color: var(--ink); text-decoration: none; letter-spacing: 0.02em; text-transform: uppercase; }
+    .nav-links { display: flex; align-items: center; gap: 32px; }
+    .nav-links a, .nav-links .dropdown > span { font-size: 0.82rem; font-weight: 500; color: var(--muted); text-decoration: none; cursor: pointer; transition: color 0.2s; }
     .nav-links a:hover, .nav-links .dropdown:hover > span { color: var(--ink); }
     .dropdown { position: relative; }
-    .dropdown-menu { display: none; position: absolute; top: calc(100% + 12px); right: 0; background: #fff; border: 1px solid var(--rule); border-radius: 10px; overflow: hidden; min-width: 160px; box-shadow: 0 8px 24px rgba(17,17,16,0.08); }
+    .dropdown-menu { display: none; position: absolute; top: calc(100% + 12px); right: 0; background: var(--surface); border: 1px solid var(--rule); border-radius: 12px; overflow: hidden; min-width: 168px; box-shadow: 0 8px 32px rgba(17,17,16,0.08); }
     .dropdown:hover .dropdown-menu { display: block; }
-    .dropdown-menu a { display: block; padding: 10px 16px; font-size: 0.875rem; color: var(--ink) !important; text-decoration: none; transition: background 0.15s; }
-    .dropdown-menu a:hover { background: var(--cream); }
+    .dropdown-menu a { display: block; padding: 11px 18px; font-size: 0.82rem; font-weight: 500; color: var(--muted) !important; text-decoration: none; transition: background 0.15s, color 0.15s; }
+    .dropdown-menu a:hover { background: var(--bg2); color: var(--ink) !important; }
 
     /* PAGE HEADER */
-    .page-header {
-      max-width: 860px; margin: 0 auto; padding: 72px 40px 48px;
-      border-bottom: 1px solid var(--rule);
-    }
-    .page-eyebrow { font-size: 0.7rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); margin-bottom: 16px; }
-    .page-header h1 { font-family: 'Instrument Serif', serif; font-size: clamp(2.2rem, 5vw, 3.5rem); letter-spacing: -0.025em; line-height: 1.1; color: var(--ink); margin-bottom: 14px; }
+    .page-header { max-width: 900px; margin: 0 auto; padding: 72px 48px 48px; border-bottom: 1px solid var(--rule); }
+    .page-eyebrow { font-family: 'Syne', sans-serif; font-size: 0.65rem; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: var(--faint); margin-bottom: 16px; }
+    .page-header h1 { font-family: 'Syne', sans-serif; font-size: clamp(2.2rem, 5vw, 3.5rem); font-weight: 800; letter-spacing: -0.035em; line-height: 1.05; color: var(--ink); margin-bottom: 14px; }
     .page-header p { font-size: 1rem; color: var(--muted); max-width: 440px; }
 
     /* GAME TABS */
-    .tab-bar {
-      max-width: 860px; margin: 0 auto; padding: 0 40px;
-      display: flex; gap: 0; border-bottom: 1px solid var(--rule);
-    }
+    .tab-bar { max-width: 900px; margin: 0 auto; padding: 0 48px; display: flex; gap: 0; border-bottom: 1px solid var(--rule); }
     .tab-btn {
-      display: flex; align-items: center; gap: 8px;
-      padding: 18px 24px; background: none; border: none;
-      font-family: 'DM Sans', sans-serif; font-size: 0.9rem; font-weight: 600;
-      color: var(--muted); cursor: pointer; border-bottom: 2px solid transparent;
+      display: flex; align-items: center; gap: 8px; padding: 18px 24px;
+      background: none; border: none; font-family: 'Manrope', sans-serif; font-size: 0.88rem; font-weight: 600;
+      color: var(--faint); cursor: pointer; border-bottom: 2px solid transparent;
       margin-bottom: -1px; transition: color 0.2s, border-color 0.2s;
     }
-    .tab-btn.active-dr { color: #0ea5c5; border-bottom-color: var(--dr-cyan); }
-    .tab-btn.active-ts { color: var(--ts-accent); border-bottom-color: var(--ts-accent); }
-    .tab-dot { width: 8px; height: 8px; border-radius: 50%; }
+    .tab-btn.active-dr { color: var(--dr); border-bottom-color: var(--dr); }
+    .tab-btn.active-ts { color: var(--ts); border-bottom-color: var(--ts); }
+    .tab-dot { width: 7px; height: 7px; border-radius: 50%; }
 
     /* LAYOUT */
-    .support-layout {
-      max-width: 860px; margin: 0 auto; padding: 0 40px 80px;
-      display: grid; grid-template-columns: 200px 1fr; gap: 48px; align-items: start;
-    }
-
-    .sidebar {
-      position: sticky; top: 88px; padding-top: 40px;
-    }
-
-    .sidebar-section { margin-bottom: 4px; }
-
+    .support-layout { max-width: 900px; margin: 0 auto; padding: 0 48px 80px; display: grid; grid-template-columns: 192px 1fr; gap: 56px; align-items: start; }
+    .sidebar { position: sticky; top: 86px; padding-top: 40px; }
     .sidebar-link {
       display: block; padding: 8px 12px; border-radius: 8px;
-      font-size: 0.85rem; font-weight: 500; color: var(--muted);
+      font-size: 0.83rem; font-weight: 500; color: var(--muted);
       text-decoration: none; cursor: pointer; transition: background 0.15s, color 0.2s;
-      border: none; background: none; width: 100%; text-align: left; font-family: 'DM Sans', sans-serif;
+      border: none; background: none; width: 100%; text-align: left; font-family: 'Manrope', sans-serif; margin-bottom: 2px;
     }
-    .sidebar-link:hover { background: rgba(17,17,16,0.05); color: var(--ink); }
-    .sidebar-link.active { background: rgba(17,17,16,0.07); color: var(--ink); font-weight: 600; }
+    .sidebar-link:hover { background: var(--bg2); color: var(--ink); }
+    .sidebar-link.active { background: var(--bg2); color: var(--ink); font-weight: 600; }
 
     /* CONTENT */
     .support-content { padding-top: 40px; }
-
-    .faq-section { margin-bottom: 48px; }
-
+    .faq-section { margin-bottom: 52px; }
     .section-heading {
-      font-family: 'Instrument Serif', serif; font-size: 1.4rem;
-      letter-spacing: -0.01em; color: var(--ink); margin-bottom: 16px;
+      font-family: 'Syne', sans-serif; font-size: 1.1rem; font-weight: 800;
+      letter-spacing: -0.02em; color: var(--ink); margin-bottom: 16px;
       padding-bottom: 12px; border-bottom: 1px solid var(--rule);
     }
 
-    .accordion { border: 1px solid var(--rule); border-radius: 12px; overflow: hidden; }
-
+    .accordion { border: 1px solid var(--rule); border-radius: 14px; overflow: hidden; background: var(--surface); }
     .accordion-item { border-top: 1px solid var(--rule); }
     .accordion-item:first-child { border-top: none; }
-
     .accordion-trigger {
       width: 100%; display: flex; align-items: center; justify-content: space-between;
       padding: 16px 20px; background: none; border: none; cursor: pointer;
-      font-family: 'DM Sans', sans-serif; font-size: 0.925rem; font-weight: 500;
+      font-family: 'Manrope', sans-serif; font-size: 0.9rem; font-weight: 600;
       color: var(--ink); text-align: left; gap: 12px; transition: background 0.15s;
     }
-    .accordion-trigger:hover { background: rgba(17,17,16,0.025); }
-
+    .accordion-trigger:hover { background: var(--bg2); }
     .acc-icon {
       width: 20px; height: 20px; border-radius: 50%; flex-shrink: 0;
       display: flex; align-items: center; justify-content: center;
-      font-size: 0.7rem; font-weight: 700; transition: transform 0.25s;
-      background: rgba(17,17,16,0.07); color: var(--muted);
+      font-size: 0.68rem; font-weight: 700; transition: transform 0.25s;
+      background: var(--bg2); color: var(--muted);
     }
     .accordion-item.open .acc-icon { transform: rotate(45deg); }
-
-    .accordion-body {
-      display: none; padding: 0 20px 18px; font-size: 0.9rem; color: var(--muted); line-height: 1.7;
-    }
+    .accordion-body { display: none; padding: 0 20px 18px; font-size: 0.9rem; color: var(--muted); line-height: 1.75; }
     .accordion-item.open .accordion-body { display: block; }
 
-    /* Panel switching */
     .tab-panel { display: none; }
     .tab-panel.active { display: block; }
 
-    /* CONTACT SECTION */
+    /* CONTACT */
     .contact-section {
       background: var(--ink); color: #fff; border-radius: 20px;
-      padding: 48px; margin-top: 16px;
+      padding: 48px; margin-top: 8px;
     }
-    .contact-section h2 { font-family: 'Instrument Serif', serif; font-size: 1.8rem; letter-spacing: -0.02em; margin-bottom: 10px; }
-    .contact-section p { color: rgba(255,255,255,0.55); font-size: 0.95rem; margin-bottom: 28px; max-width: 400px; }
+    .contact-section h2 { font-family: 'Syne', sans-serif; font-size: 1.8rem; font-weight: 800; letter-spacing: -0.03em; margin-bottom: 10px; }
+    .contact-section p { color: rgba(255,255,255,0.5); font-size: 0.95rem; margin-bottom: 28px; max-width: 400px; }
     .contact-email {
       display: inline-flex; align-items: center; gap: 10px;
       background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.12);
@@ -137,13 +115,13 @@
       color: #fff; font-weight: 600; font-size: 0.95rem; transition: background 0.2s;
     }
     .contact-email:hover { background: rgba(255,255,255,0.14); }
-    .contact-note { margin-top: 16px; font-size: 0.8rem; color: rgba(255,255,255,0.3); }
+    .contact-note { margin-top: 16px; font-size: 0.78rem; color: rgba(255,255,255,0.28); }
 
-    footer { padding: 40px; border-top: 1px solid var(--rule); }
-    .footer-inner { max-width: 860px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px; }
-    .footer-copy { font-size: 0.8rem; color: var(--muted); }
+    footer { border-top: 1px solid var(--rule); padding: 40px 48px; }
+    .footer-inner { max-width: 900px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px; }
+    .footer-copy { font-size: 0.8rem; color: var(--faint); }
     .footer-links { display: flex; flex-wrap: wrap; gap: 20px; }
-    .footer-links a { font-size: 0.8rem; color: var(--muted); text-decoration: none; transition: color 0.2s; }
+    .footer-links a { font-size: 0.8rem; color: var(--faint); text-decoration: none; transition: color 0.2s; }
     .footer-links a:hover { color: var(--ink); }
 
     @media (max-width: 700px) {
@@ -183,20 +161,16 @@
 
 <div class="tab-bar">
   <button class="tab-btn active-dr" onclick="switchTab('draftable', this)">
-    <span class="tab-dot" style="background:var(--dr-cyan);"></span> Draftable
+    <span class="tab-dot" style="background:var(--dr);"></span> Draftable
   </button>
   <button class="tab-btn" onclick="switchTab('timestamp', this)">
-    <span class="tab-dot" style="background:var(--ts-accent);"></span> TimeStamp!
+    <span class="tab-dot" style="background:var(--ts);"></span> TimeStamp!
   </button>
 </div>
 
 <div class="support-layout">
-  <!-- SIDEBAR -->
-  <aside class="sidebar" id="sidebar">
-    <!-- populated by JS -->
-  </aside>
+  <aside class="sidebar" id="sidebar"></aside>
 
-  <!-- CONTENT -->
   <main class="support-content">
 
     <!-- DRAFTABLE PANEL -->
@@ -321,7 +295,7 @@
           </div>
           <div class="accordion-item">
             <button class="accordion-trigger"><span>What devices is TimeStamp! available on?</span><div class="acc-icon">+</div></button>
-            <div class="accordion-body">TimeStamp! is coming soon to iPhone on iOS 16 and later. iPad support is planned for a future update.</div>
+            <div class="accordion-body">TimeStamp! is available on iPhone on iOS 16 and later. iPad support is planned for a future update.</div>
           </div>
           <div class="accordion-item">
             <button class="accordion-trigger"><span>Does TimeStamp! access my photos?</span><div class="acc-icon">+</div></button>
@@ -397,7 +371,7 @@
           </div>
           <div class="accordion-item">
             <button class="accordion-trigger"><span>How do I revoke photo access?</span><div class="acc-icon">+</div></button>
-            <div class="accordion-body">Go to iOS Settings → Privacy & Security → Photos → TimeStamp! and set access to "None." The app won't function without photo access, but you can revoke it at any time.</div>
+            <div class="accordion-body">Go to iOS Settings → Privacy &amp; Security → Photos → TimeStamp! and set access to "None." The app won't function without photo access, but you can revoke it at any time.</div>
           </div>
           <div class="accordion-item">
             <button class="accordion-trigger"><span>What data does TimeStamp Games collect?</span><div class="acc-icon">+</div></button>
@@ -415,12 +389,12 @@
           </div>
           <div class="accordion-item">
             <button class="accordion-trigger"><span>How do I delete my data?</span><div class="acc-icon">+</div></button>
-            <div class="accordion-body">Since TimeStamp! doesn't store personal data on our servers, deletion is simple: revoke photo access in iOS Settings and delete the app. Game Center data can be managed via your Apple ID settings. See our <a href="data-deletion.html" style="color:var(--ts-accent);">Data Deletion page</a> for full instructions.</div>
+            <div class="accordion-body">Since TimeStamp! doesn't store personal data on our servers, deletion is simple: revoke photo access in iOS Settings and delete the app. Game Center data can be managed via your Apple ID settings. See our <a href="data-deletion.html" style="color:var(--ts);text-decoration:underline;">Data Deletion page</a> for full instructions.</div>
           </div>
         </div>
       </div>
 
-    </div><!-- /timestamp panel -->
+    </div>
 
     <!-- CONTACT -->
     <div class="contact-section">
@@ -437,7 +411,7 @@
 
 <footer>
   <div class="footer-inner">
-    <span class="footer-copy">© 2026 TimeStamp Games</span>
+    <span class="footer-copy">© 2026 Andrew Maxwell</span>
     <div class="footer-links">
       <a href="mailto:support@timestampgames.com">support@timestampgames.com</a>
       <a href="privacy-timestamp.html">Privacy (TimeStamp!)</a>
@@ -449,7 +423,6 @@
 </footer>
 
 <script>
-  // Tab switching
   function switchTab(game, btn) {
     document.querySelectorAll('.tab-btn').forEach(b => b.className = 'tab-btn');
     document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
@@ -458,18 +431,15 @@
     buildSidebar(game);
   }
 
-  // Accordion
   document.addEventListener('click', e => {
     const trigger = e.target.closest('.accordion-trigger');
     if (!trigger) return;
     const item = trigger.closest('.accordion-item');
     const wasOpen = item.classList.contains('open');
-    // Close siblings
     item.closest('.accordion').querySelectorAll('.accordion-item').forEach(i => i.classList.remove('open'));
     if (!wasOpen) item.classList.add('open');
   });
 
-  // Sidebar
   const sidebarSections = {
     draftable: [
       { id: 'dr-getting-started', label: 'Getting Started' },
