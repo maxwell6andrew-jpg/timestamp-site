@@ -145,3 +145,8 @@ h1, h2, h3, h4 { font-family: var(--display); letter-spacing: -0.02em; line-heig
 .auto-badge { color: #15803D !important; }
 .doc-wrap .contact-cta p { color: #E4DCCF !important; }
 .contact-section p, .contact-note { color: rgba(255, 255, 255, 0.74) !important; }
+.data-table-wrap { overflow-x: auto; }
+.data-table { width: 100%; border-collapse: collapse; margin: 20px 0; font-size: 0.9rem; border: 1px solid var(--rule); border-radius: 12px; overflow: hidden; }
+.data-table th { text-align: left; padding: 11px 16px; background: var(--bg2); font-weight: 700; font-size: 0.74rem; letter-spacing: 0.07em; text-transform: uppercase; color: var(--faint); border-bottom: 1px solid var(--rule); }
+.data-table td { padding: 13px 16px; border-bottom: 1px solid var(--rule); vertical-align: top; }
+.badge-nt { background: #FBE3DD !important; color: #8E2513 !important; border-color: rgba(194, 54, 31, 0.25) !important; }
