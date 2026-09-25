@@ -4,9 +4,6 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Terms of Use — TimeStamp Games</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     :root {
@@ -14,20 +11,20 @@
       --muted: #717170; --faint: #9E9E9C; --rule: #E4E4DF;
     }
     html { scroll-behavior: smooth; }
-    body { background: var(--bg); color: var(--ink); font-family: 'Manrope', sans-serif; line-height: 1.75; overflow-x: hidden; }
+    body { background: var(--bg); color: var(--ink); font-family: var(--body); line-height: 1.75; overflow-x: hidden; }
     body::after {
       content: ''; position: fixed; inset: 0; pointer-events: none; z-index: 9999; opacity: 0.022;
       background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.5'/%3E%3C/svg%3E");
     }
 
-    nav {
+    nav.legacy-nav {
       position: sticky; top: 0; z-index: 200;
       display: flex; align-items: center; justify-content: space-between;
       padding: 0 48px; height: 62px;
       background: rgba(250,250,247,0.92); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
       border-bottom: 1px solid var(--rule);
     }
-    .wordmark { font-family: 'Syne', sans-serif; font-weight: 800; font-size: 1rem; color: var(--ink); text-decoration: none; letter-spacing: 0.02em; text-transform: uppercase; }
+    .wordmark { font-family: var(--display); font-weight: 800; font-size: 1rem; color: var(--ink); text-decoration: none; letter-spacing: 0.02em; text-transform: uppercase; }
     .nav-links { display: flex; align-items: center; gap: 32px; }
     .nav-links a, .nav-links .dropdown > span { font-size: 0.82rem; font-weight: 500; color: var(--muted); text-decoration: none; cursor: pointer; transition: color 0.2s; }
     .nav-links a:hover, .nav-links .dropdown:hover > span { color: var(--ink); }
@@ -38,12 +35,12 @@
     .dropdown-menu a:hover { background: var(--bg2); color: var(--ink) !important; }
 
     .doc-wrap { max-width: 720px; margin: 0 auto; padding: 72px 48px 100px; }
-    .doc-eyebrow { font-family: 'Syne', sans-serif; font-size: 0.65rem; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: var(--faint); margin-bottom: 16px; }
-    .doc-wrap h1 { font-family: 'Syne', sans-serif; font-size: clamp(2rem, 4vw, 2.8rem); font-weight: 800; letter-spacing: -0.035em; line-height: 1.05; margin-bottom: 14px; }
+    .doc-eyebrow { font-family: var(--display); font-size: 0.65rem; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: var(--faint); margin-bottom: 16px; }
+    .doc-wrap h1 { font-family: var(--display); font-size: clamp(2rem, 4vw, 2.8rem); font-weight: 800; letter-spacing: -0.035em; line-height: 1.05; margin-bottom: 14px; }
     .doc-meta { font-size: 0.85rem; color: var(--faint); margin-bottom: 52px; padding-bottom: 32px; border-bottom: 1px solid var(--rule); line-height: 1.6; }
     .doc-meta a { color: var(--muted); text-decoration: underline; text-underline-offset: 2px; }
 
-    .doc-wrap h2 { font-family: 'Syne', sans-serif; font-size: 1.1rem; font-weight: 800; letter-spacing: -0.02em; color: var(--ink); margin: 44px 0 14px; }
+    .doc-wrap h2 { font-family: var(--display); font-size: 1.1rem; font-weight: 800; letter-spacing: -0.02em; color: var(--ink); margin: 44px 0 14px; }
     .doc-wrap p { font-size: 0.95rem; color: var(--muted); margin-bottom: 14px; }
     .doc-wrap ul { padding-left: 22px; margin-bottom: 14px; }
     .doc-wrap ul li { font-size: 0.95rem; color: var(--muted); margin-bottom: 8px; }
@@ -57,7 +54,7 @@
       border-radius: 12px; padding: 18px 20px; margin: 20px 0;
     }
 
-    footer { border-top: 1px solid var(--rule); padding: 40px 48px; }
+    footer.legacy-footer { border-top: 1px solid var(--rule); padding: 40px 48px; }
     .footer-inner { max-width: 720px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px; }
     .footer-copy { font-size: 0.8rem; color: var(--faint); }
     .footer-links { display: flex; flex-wrap: wrap; gap: 20px; }
@@ -65,29 +62,43 @@
     .footer-links a:hover { color: var(--ink); }
 
     @media (max-width: 700px) {
-      nav { padding: 0 20px; } .nav-links { gap: 20px; }
+      nav.legacy-nav { padding: 0 20px; } .nav-links { gap: 20px; }
       .doc-wrap { padding: 48px 20px 60px; }
-      footer { padding: 28px 20px; }
+      footer.legacy-footer { padding: 28px 20px; }
       .footer-inner { flex-direction: column; align-items: flex-start; }
     }
   </style>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2315120E'/%3E%3Crect x='10' y='26' width='12' height='12' rx='3' fill='%23E0A526'/%3E%3Crect x='26' y='26' width='12' height='12' rx='3' fill='%237C3AED'/%3E%3Crect x='42' y='26' width='12' height='12' rx='3' fill='%23E2462C'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="assets/site.css">
 </head>
 <body>
+  <a class="skip-link" href="#main">Skip to content</a>
 
-<nav>
-  <a href="index.html" class="wordmark">TimeStamp Games</a>
-  <div class="nav-links">
-    <div class="dropdown">
-      <span>Privacy ▾</span>
-      <div class="dropdown-menu">
-        <a href="privacy-timestamp.html">TimeStamp!</a>
-        <a href="privacy-draftable.html">Draftable</a>
-      </div>
+  <header class="site-header">
+    <div class="wrap">
+      <a class="brand" href="index.html" aria-label="TimeStamp Games home">
+        <span class="brand-mark" aria-hidden="true"><span></span><span></span><span></span></span>
+        <span class="brand-name">TimeStamp Games</span>
+      </a>
+      <nav class="site-nav" aria-label="Main">
+        <a href="index.html#games" class="hide-sm">Games</a>
+        <a href="support.html">Support</a>
+        <details>
+          <summary>Legal</summary>
+          <div class="menu">
+            <a href="privacy-timestamp.html">TimeStamp! privacy</a>
+            <a href="privacy-draftable.html">Draftable privacy</a>
+            <a href="site-privacy.html">Website privacy</a>
+            <a href="terms.html">Terms of use</a>
+            <a href="data-deletion.html">Data deletion</a>
+            <a href="accessibility.html">Accessibility</a>
+          </div>
+        </details>
+      </nav>
     </div>
-    <a href="support.html">Support</a>
-    <a href="terms.html">Terms</a>
-  </div>
-</nav>
+  </header>
+
+  <main id="main">
 
 <div class="doc-wrap">
   <p class="doc-eyebrow">Legal</p>
@@ -113,7 +124,7 @@
   </ul>
 
   <h2>4. App-Specific Terms</h2>
-  <p><strong>TimeStamp!</strong> — The app accesses your device's photo library to read timestamp metadata (the date photos were taken). This access is used solely to generate gameplay. Your photos are never uploaded or transmitted. You may revoke photo access at any time via iOS Settings.</p>
+  <p><strong>TimeStamp!</strong> — The app accesses your device's photo library to read timestamp metadata (the date photos were taken). This access is used solely for gameplay. In solo and Daily games, photos stay on your device. In Party Mode, small thumbnails of the round's photos are shared with the other players in your room, as described in the <a href="privacy-timestamp.html">TimeStamp! Privacy Policy</a>. Only play Party Mode with photos you're comfortable sharing. You may revoke photo access at any time via iOS Settings.</p>
   <p><strong>Draftable</strong> — The app connects players in real-time game sessions via Firebase. Player names, draft picks, and votes are temporarily stored to enable multiplayer gameplay. Game rooms are deleted about 3 hours after they're created and poll results within 30 days. By participating in a game, you acknowledge that your display name and picks will be visible to other players and anyone who receives the poll link.</p>
 
   <h2>5. Prohibited Conduct</h2>
@@ -171,18 +182,50 @@
   <strong>Company:</strong> Andrew Maxwell</p>
 </div>
 
-<footer>
-  <div class="footer-inner">
-    <span class="footer-copy">© 2026 Andrew Maxwell</span>
-    <div class="footer-links">
-      <a href="mailto:andrewgmaxwell123@gmail.com">andrewgmaxwell123@gmail.com</a>
-      <a href="privacy-timestamp.html">Privacy (TimeStamp!)</a>
-      <a href="privacy-draftable.html">Privacy (Draftable)</a>
-      <a href="terms.html">Terms</a>
-      <a href="data-deletion.html">Data Deletion</a>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <div class="footer-grid">
+        <div class="footer-about">
+          <a class="brand" href="index.html"><span class="brand-mark" aria-hidden="true"><span></span><span></span><span></span></span>TimeStamp Games</a>
+          <p>Party games for iPhone, made to play together.</p>
+        </div>
+        <div>
+          <h2>Games</h2>
+          <ul>
+            <li><a href="index.html#timestamp">TimeStamp!</a></li>
+            <li><a href="index.html#draftable">Draftable</a></li>
+            <li><a href="index.html#nametags">Nametags</a></li>
+          </ul>
+        </div>
+        <div>
+          <h2>Help</h2>
+          <ul>
+            <li><a href="support.html">Support</a></li>
+            <li><a href="data-deletion.html">Data deletion</a></li>
+            <li><a href="mailto:andrewgmaxwell123@gmail.com">Contact</a></li>
+          </ul>
+        </div>
+        <div>
+          <h2>Legal</h2>
+          <ul>
+            <li><a href="privacy-timestamp.html">TimeStamp! privacy</a></li>
+            <li><a href="privacy-draftable.html">Draftable privacy</a></li>
+            <li><a href="site-privacy.html">Website privacy</a></li>
+            <li><a href="terms.html">Terms of use</a></li>
+            <li><a href="accessibility.html">Accessibility</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-legal">
+        <p>© 2026 Andrew Maxwell. All rights reserved.</p>
+        <p>This website does not use cookies, analytics, advertising, or third-party trackers.</p>
+        <p>Apple, iPhone, and App Store are trademarks of Apple Inc., registered in the U.S. and other countries. TimeStamp Games is not affiliated with or endorsed by Apple Inc.</p>
+      </div>
     </div>
-  </div>
-</footer>
+  </footer>
+
 
 </body>
 </html>
