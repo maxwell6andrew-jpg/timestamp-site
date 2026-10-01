@@ -11,6 +11,7 @@
       --muted: #717170; --faint: #9E9E9C; --rule: #E4E4DF;
       --dr: #7c3aed; --dr-light: rgba(124,58,237,0.08); --dr-border: rgba(124,58,237,0.22);
       --ts: #f97316; --ts-light: rgba(249,115,22,0.08); --ts-border: rgba(249,115,22,0.22);
+      --ff: #00995a;
     }
     html { scroll-behavior: smooth; }
     body { background: var(--bg); color: var(--ink); font-family: var(--body); line-height: 1.6; overflow-x: hidden; }
@@ -52,6 +53,7 @@
     }
     .tab-btn.active-dr { color: var(--dr); border-bottom-color: var(--dr); }
     .tab-btn.active-ts { color: var(--ts); border-bottom-color: var(--ts); }
+    .tab-btn.active-ff { color: var(--ff); border-bottom-color: var(--ff); }
     .tab-dot { width: 7px; height: 7px; border-radius: 50%; }
 
     /* LAYOUT */
@@ -153,6 +155,7 @@
             <a href="privacy-timestamp.html">TimeStamp! privacy</a>
             <a href="privacy-draftable.html">Draftable privacy</a>
             <a href="privacy-hi-stranger.html">Hi Stranger privacy</a>
+            <a href="privacy-fifty.html">Fifty privacy</a>
             <a href="site-privacy.html">Website privacy</a>
             <a href="terms.html">Terms of use</a>
             <a href="data-deletion.html">Data deletion</a>
@@ -168,7 +171,7 @@
 <div class="page-header">
   <p class="page-eyebrow">Help Center</p>
   <h1>Support</h1>
-  <p>Find answers for both games below, or reach out directly — we aim to reply within a few business days.</p>
+  <p>Find answers for our games below, or reach out directly — we aim to reply within a few business days.</p>
 </div>
 
 <div class="tab-bar">
@@ -177,6 +180,9 @@
   </button>
   <button class="tab-btn" onclick="switchTab('timestamp', this)">
     <span class="tab-dot" style="background:var(--ts);"></span> TimeStamp!
+  </button>
+  <button class="tab-btn" onclick="switchTab('fifty', this)">
+    <span class="tab-dot" style="background:var(--ff);"></span> Fifty
   </button>
 </div>
 
@@ -408,6 +414,83 @@
 
     </div>
 
+    <!-- FIFTY PANEL -->
+    <div class="tab-panel" id="panel-fifty">
+
+      <div class="faq-section" id="ff-money">
+        <h2 class="section-heading">Play Money (Not Real Money)</h2>
+        <div class="accordion">
+          <div class="accordion-item">
+            <button class="accordion-trigger"><span>Is Fifty real money?</span><div class="acc-icon">+</div></button>
+            <div class="accordion-body"><strong>No.</strong> Fifty uses play money only. The dollar amounts are pretend points. Play money is free, has no cash value, and can never be bought, cashed out, withdrawn, transferred, or traded. There are no prizes. Fifty is not gambling or a sportsbook.</div>
+          </div>
+          <div class="accordion-item">
+            <button class="accordion-trigger"><span>Can I buy more play money?</span><div class="acc-icon">+</div></button>
+            <div class="accordion-body">No. Everyone gets a free play bankroll in each group, and that's it. Nothing in Fifty sells play money or picks.</div>
+          </div>
+          <div class="accordion-item">
+            <button class="accordion-trigger"><span>What does Fifty Pro do?</span><div class="acc-icon">+</div></button>
+            <div class="accordion-body">Pro unlocks features: unlimited open markets, groups up to 40 people, secret markets, and month-long markets. It never buys play money, picks, odds, or prizes. It's $0.99/week or $19.99/year, billed by Apple. Cancel anytime in Settings › your name › Subscriptions.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-section" id="ff-groups">
+        <h2 class="section-heading">Groups &amp; Invites</h2>
+        <div class="accordion">
+          <div class="accordion-item">
+            <button class="accordion-trigger"><span>How do friends join my group?</span><div class="acc-icon">+</div></button>
+            <div class="accordion-body">In your group, tap Invite and send the link. If they have Fifty, tapping it opens the group. If not, they can install Fifty, then tap the link again, or paste it under New group › Got an invite instead?</div>
+          </div>
+          <div class="accordion-item">
+            <button class="accordion-trigger"><span>How many people can be in a group?</span><div class="acc-icon">+</div></button>
+            <div class="accordion-body">Up to 5 for free groups. If the person who started the group has Fifty Pro, up to 40.</div>
+          </div>
+          <div class="accordion-item">
+            <button class="accordion-trigger"><span>Do I need an account?</span><div class="acc-icon">+</div></button>
+            <div class="accordion-body">No. Just enter your first name. There are no emails, passwords, or logins.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-section" id="ff-markets">
+        <h2 class="section-heading">Markets &amp; Picks</h2>
+        <div class="accordion">
+          <div class="accordion-item">
+            <button class="accordion-trigger"><span>How do the odds work?</span><div class="acc-icon">+</div></button>
+            <div class="accordion-body">Every market opens at 50/50. Each pick moves the odds toward that side, and bigger picks move them more. Your payout is locked in when you make your pick and is shown before you confirm.</div>
+          </div>
+          <div class="accordion-item">
+            <button class="accordion-trigger"><span>Who settles a market?</span><div class="acc-icon">+</div></button>
+            <div class="accordion-body">Only the person who opened it. If your group disagrees about the result, sort it out together. Fifty doesn't decide outcomes.</div>
+          </div>
+          <div class="accordion-item">
+            <button class="accordion-trigger"><span>Why can't I pick on a market about me?</span><div class="acc-icon">+</div></button>
+            <div class="accordion-body">Because you control the outcome. You can watch the odds, though, and prove everyone wrong.</div>
+          </div>
+          <div class="accordion-item">
+            <button class="accordion-trigger"><span>A market about me is mean. What can I do?</span><div class="acc-icon">+</div></button>
+            <div class="accordion-body">Open it, tap ••• › Take it down (everyone's play money is refunded), or Report it. You can also block the person who made it from the group's members list.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-section" id="ff-account">
+        <h2 class="section-heading">Account &amp; Data</h2>
+        <div class="accordion">
+          <div class="accordion-item">
+            <button class="accordion-trigger"><span>How do I delete my data?</span><div class="acc-icon">+</div></button>
+            <div class="accordion-body">Tap your avatar › Sign out and reset. That removes you from your groups and erases Fifty from your phone. For full deletion, see our <a href="data-deletion.html" style="color:var(--ff);text-decoration:underline;">Data Deletion page</a> or email us.</div>
+          </div>
+          <div class="accordion-item">
+            <button class="accordion-trigger"><span>Where is Fifty's privacy policy?</span><div class="acc-icon">+</div></button>
+            <div class="accordion-body"><a href="privacy-fifty.html" style="color:var(--ff);text-decoration:underline;">Fifty Privacy Policy</a> and <a href="terms.html#fifty" style="color:var(--ff);text-decoration:underline;">Terms (Section 5d)</a>.</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
     <!-- CONTACT -->
     <div class="contact-section">
       <h2>Still need help?</h2>
@@ -436,6 +519,7 @@
             <li><a href="index.html#timestamp">TimeStamp!</a></li>
             <li><a href="index.html#draftable">Draftable</a></li>
             <li><a href="index.html#hi-stranger">Hi Stranger</a></li>
+            <li><a href="index.html#fifty">Fifty</a></li>
           </ul>
         </div>
         <div>
@@ -452,6 +536,7 @@
             <li><a href="privacy-timestamp.html">TimeStamp! privacy</a></li>
             <li><a href="privacy-draftable.html">Draftable privacy</a></li>
             <li><a href="privacy-hi-stranger.html">Hi Stranger privacy</a></li>
+            <li><a href="privacy-fifty.html">Fifty privacy</a></li>
             <li><a href="site-privacy.html">Website privacy</a></li>
             <li><a href="terms.html">Terms of use</a></li>
             <li><a href="accessibility.html">Accessibility</a></li>
@@ -471,7 +556,7 @@
   function switchTab(game, btn) {
     document.querySelectorAll('.tab-btn').forEach(b => b.className = 'tab-btn');
     document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
-    btn.classList.add(game === 'draftable' ? 'active-dr' : 'active-ts');
+    btn.classList.add(game === 'draftable' ? 'active-dr' : game === 'fifty' ? 'active-ff' : 'active-ts');
     document.getElementById('panel-' + game).classList.add('active');
     buildSidebar(game);
   }
@@ -486,6 +571,12 @@
   });
 
   const sidebarSections = {
+    fifty: [
+      { id: 'ff-money',   label: 'Play Money' },
+      { id: 'ff-groups',  label: 'Groups & Invites' },
+      { id: 'ff-markets', label: 'Markets & Picks' },
+      { id: 'ff-account', label: 'Account & Data' },
+    ],
     draftable: [
       { id: 'dr-getting-started', label: 'Getting Started' },
       { id: 'dr-room',            label: 'Creating & Joining' },

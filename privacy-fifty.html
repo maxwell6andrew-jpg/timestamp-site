@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Privacy Policy — Fifty — TimeStamp Games</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg: #FAFAF7; --bg2: #F4F4F0; --surface: #FFFFFF; --ink: #111110;
+      --muted: #717170; --faint: #9E9E9C; --rule: #E4E4DF;
+      --ts: #00995a; --ts-light: rgba(0,186,107,0.09); --ts-border: rgba(0,186,107,0.28);
+    }
+    html { scroll-behavior: smooth; }
+    body { background: var(--bg); color: var(--ink); font-family: var(--body); line-height: 1.75; overflow-x: hidden; }
+    body::after {
+      content: ''; position: fixed; inset: 0; pointer-events: none; z-index: 9999; opacity: 0.022;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.5'/%3E%3C/svg%3E");
+    }
+
+    nav.legacy-nav {
+      position: sticky; top: 0; z-index: 200;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 48px; height: 62px;
+      background: rgba(250,250,247,0.92); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--rule);
+    }
+    .wordmark { font-family: var(--display); font-weight: 800; font-size: 1rem; color: var(--ink); text-decoration: none; letter-spacing: 0.02em; text-transform: uppercase; }
+    .nav-links { display: flex; align-items: center; gap: 32px; }
+    .nav-links a, .nav-links .dropdown > span { font-size: 0.82rem; font-weight: 500; color: var(--muted); text-decoration: none; cursor: pointer; transition: color 0.2s; }
+    .nav-links a:hover, .nav-links .dropdown:hover > span { color: var(--ink); }
+    .dropdown { position: relative; }
+    .dropdown-menu { display: none; position: absolute; top: calc(100% + 12px); right: 0; background: var(--surface); border: 1px solid var(--rule); border-radius: 12px; overflow: hidden; min-width: 168px; box-shadow: 0 8px 32px rgba(17,17,16,0.08); }
+    .dropdown:hover .dropdown-menu { display: block; }
+    .dropdown-menu a { display: block; padding: 11px 18px; font-size: 0.82rem; font-weight: 500; color: var(--muted) !important; text-decoration: none; transition: background 0.15s, color 0.15s; }
+    .dropdown-menu a:hover { background: var(--bg2); color: var(--ink) !important; }
+
+    .doc-wrap { max-width: 720px; margin: 0 auto; padding: 72px 48px 100px; }
+
+    .doc-game-badge {
+      display: inline-flex; align-items: center; gap: 6px;
+      font-family: var(--display); font-size: 0.63rem; font-weight: 700;
+      letter-spacing: 0.14em; text-transform: uppercase;
+      padding: 5px 13px; border-radius: 100px; margin-bottom: 20px;
+      background: var(--ts-light); color: var(--ts); border: 1px solid var(--ts-border);
+    }
+
+    .doc-wrap h1 { font-family: var(--display); font-size: clamp(2rem, 4vw, 2.8rem); font-weight: 800; letter-spacing: -0.035em; line-height: 1.05; margin-bottom: 14px; }
+    .doc-meta { font-size: 0.85rem; color: var(--faint); margin-bottom: 52px; padding-bottom: 32px; border-bottom: 1px solid var(--rule); line-height: 1.6; }
+    .doc-meta a { color: var(--muted); text-decoration: underline; text-underline-offset: 2px; }
+
+    .doc-wrap h2 { font-family: var(--display); font-size: 1.1rem; font-weight: 800; letter-spacing: -0.02em; color: var(--ink); margin: 44px 0 14px; }
+    .doc-wrap h3 { font-size: 0.95rem; font-weight: 700; color: var(--ink); margin: 28px 0 10px; }
+    .doc-wrap p { font-size: 0.95rem; color: var(--muted); margin-bottom: 14px; }
+    .doc-wrap ul { padding-left: 22px; margin-bottom: 14px; }
+    .doc-wrap ul li { font-size: 0.95rem; color: var(--muted); margin-bottom: 8px; }
+    .doc-wrap a { color: var(--ts); text-decoration: none; }
+    .doc-wrap a:hover { text-decoration: underline; }
+    .doc-wrap strong { color: var(--ink); font-weight: 600; }
+
+    .highlight-box {
+      background: var(--ts-light); border: 1px solid var(--ts-border);
+      border-radius: 14px; padding: 18px 20px; margin: 28px 0;
+    }
+    .highlight-box p { margin: 0; color: var(--ink); font-weight: 600; font-size: 0.92rem; }
+
+    footer.legacy-footer { border-top: 1px solid var(--rule); padding: 40px 48px; }
+    .footer-inner { max-width: 720px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px; }
+    .footer-copy { font-size: 0.8rem; color: var(--faint); }
+    .footer-links { display: flex; flex-wrap: wrap; gap: 20px; }
+    .footer-links a { font-size: 0.8rem; color: var(--faint); text-decoration: none; transition: color 0.2s; }
+    .footer-links a:hover { color: var(--ink); }
+
+    @media (max-width: 700px) {
+      nav.legacy-nav { padding: 0 20px; } .nav-links { gap: 20px; }
+      .doc-wrap { padding: 48px 20px 60px; }
+      footer.legacy-footer { padding: 28px 20px; }
+      .footer-inner { flex-direction: column; align-items: flex-start; }
+    }
+  </style>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2315120E'/%3E%3Crect x='10' y='26' width='12' height='12' rx='3' fill='%23E0A526'/%3E%3Crect x='26' y='26' width='12' height='12' rx='3' fill='%237C3AED'/%3E%3Crect x='42' y='26' width='12' height='12' rx='3' fill='%23E2462C'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="assets/site.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header">
+    <div class="wrap">
+      <a class="brand" href="index.html" aria-label="TimeStamp Games home">
+        <span class="brand-mark" aria-hidden="true"><span></span><span></span><span></span></span>
+        <span class="brand-name">TimeStamp Games</span>
+      </a>
+      <nav class="site-nav" aria-label="Main">
+        <a href="index.html#games" class="hide-sm">Games</a>
+        <a href="support.html">Support</a>
+        <details>
+          <summary>Legal</summary>
+          <div class="menu">
+            <a href="privacy-timestamp.html">TimeStamp! privacy</a>
+            <a href="privacy-draftable.html">Draftable privacy</a>
+            <a href="privacy-hi-stranger.html">Hi Stranger privacy</a>
+            <a href="privacy-fifty.html">Fifty privacy</a>
+            <a href="site-privacy.html">Website privacy</a>
+            <a href="terms.html">Terms of use</a>
+            <a href="data-deletion.html">Data deletion</a>
+            <a href="accessibility.html">Accessibility</a>
+          </div>
+        </details>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+
+<div class="doc-wrap">
+  <span class="doc-game-badge">● Fifty</span>
+  <h1>Privacy Policy</h1>
+  <p class="doc-meta">Effective Date: October 1, 2026 &nbsp;·&nbsp; Andrew Maxwell &nbsp;·&nbsp; <a href="mailto:andrewgmaxwell123@gmail.com">andrewgmaxwell123@gmail.com</a></p>
+
+  <div class="highlight-box">
+    <p>🎲 Fifty is a game that uses <strong>play money only</strong>. Nothing in Fifty is real money: play money is free, has no cash value, can never be bought, cashed out, withdrawn, transferred, or traded, and there are no prizes. Fifty has no accounts, no ads, and no tracking.</p>
+  </div>
+
+  <h2>1. About This Policy</h2>
+  <p>This Privacy Policy explains how Andrew Maxwell ("we," "us," or "our") handles information in the Fifty iOS app. Fifty is a social prediction game for adults (18 or older): friends form a group, open yes-or-no "markets" about things in their lives, and make picks with play money. Odds move as people pick, and the person who opens a market settles it.</p>
+
+  <h2>2. Play Money, Not Real Money</h2>
+  <p>We say this everywhere because it matters: <strong>Fifty does not involve real money in any way.</strong></p>
+  <ul>
+    <li>The dollar amounts in Fifty are pretend points. Every group member starts with a free play bankroll.</li>
+    <li>Play money can't be purchased, and it has no cash value. It can't be cashed out, withdrawn, transferred, traded, sold, or exchanged for anything.</li>
+    <li>No prizes of any kind are awarded. Winning a market gets you bragging rights and a spot on your group's leaderboard.</li>
+    <li>Fifty Pro is an optional subscription that unlocks app features. It never buys play money, picks, odds, or prizes.</li>
+    <li>Fifty is not a gambling service, casino, sportsbook, or real-money prediction market, and we never collect payment or banking details. Purchases of Fifty Pro are handled entirely by Apple.</li>
+  </ul>
+
+  <h2>3. What the App Stores</h2>
+  <div class="data-table-wrap"><table class="data-table">
+    <thead><tr><th>Information</th><th>Why</th><th>Where it lives</th></tr></thead>
+    <tbody>
+      <tr><td>Your first name and avatar color</td><td>So your group knows who picked what</td><td>Your phone and Google Firebase</td></tr>
+      <tr><td>A random ID created on your phone</td><td>To tell group members apart without an account</td><td>Your phone and Google Firebase</td></tr>
+      <tr><td>Groups you start or join (name, emoji, members)</td><td>To run your group</td><td>Google Firebase</td></tr>
+      <tr><td>Markets you open (the question, who it's about, close time, result)</td><td>Gameplay</td><td>Google Firebase</td></tr>
+      <tr><td>Your picks (side, play-money amount, time)</td><td>To compute odds, payouts, and the leaderboard</td><td>Google Firebase</td></tr>
+      <tr><td>Push notification token (only if you allow notifications)</td><td>To tell you about markets about you, results, and big odds swings</td><td>Google Firebase</td></tr>
+      <tr><td>Reports you send (the market and the reason)</td><td>To review content that breaks our rules</td><td>Google Firebase</td></tr>
+      <tr><td>People you've blocked, markets you've hidden, demo groups</td><td>Your own settings</td><td>Your phone only</td></tr>
+    </tbody>
+  </table></div>
+
+  <h2>4. Who Can See It</h2>
+  <p>Everything in a group (members' first names, markets, picks, and results) is visible to the members of that group. Group links are private and hard to guess; groups can't be searched or listed. A "secret" market is hidden from the person it's about on their phone until the market settles. Invite and market links open a web page that shows the group or market name and current odds to anyone who has the link.</p>
+
+  <h2>5. People in Markets</h2>
+  <p>Markets are often about real people in your group. Keep them friendly. The person a market is about can always see it (except a secret market, until it settles), can't make picks on it, and can take it down at any time, which refunds everyone's play money. Anyone can report a market or block the person who made it. To have a market about you removed, email us.</p>
+
+  <h2>6. What We Don't Collect</h2>
+  <ul>
+    <li>No email address, phone number, password, or account</li>
+    <li>No contacts, location, photos, camera, or microphone access</li>
+    <li>No payment or banking information (Apple handles Fifty Pro)</li>
+    <li>No advertising, analytics, or tracking SDKs, and no data sold or shared for advertising</li>
+  </ul>
+
+  <h2>7. Permissions</h2>
+  <p>Fifty only asks for notification permission, and only after you open a market or make a pick. You can turn notifications off anytime in iOS Settings.</p>
+
+  <h2>8. Retention and Deletion</h2>
+  <p>Group data is kept while the group exists so your group's history and leaderboard keep working. Markets that are taken down are deleted right away. <strong>Sign out and reset</strong> (tap your avatar in the app) removes you from every group you're in, deletes your notification token, and erases Fifty's data from your phone. Your past picks stay in the group's history under your first name. To delete everything, including past picks, email <a href="mailto:andrewgmaxwell123@gmail.com">andrewgmaxwell123@gmail.com</a> with the subject "Data Deletion — Fifty" and your group's name. See also our <a href="data-deletion.html">Data Deletion page</a>.</p>
+
+  <h2>9. Service Providers</h2>
+  <p>Fifty stores group data with Google Firebase (Realtime Database and Hosting) in the United States. Notifications are delivered through Apple Push Notification service. Fifty Pro purchases are processed by Apple; we never see your payment details.</p>
+
+  <h2>10. Age Requirement</h2>
+  <p>Fifty is only for people 18 and older. We don't knowingly collect information from anyone under 18. If you believe a minor is using Fifty, contact us and we'll delete their data.</p>
+
+  <h2>11. Your Rights</h2>
+  <p>Depending on where you live, you may have the right to access, correct, or delete your information. Email us and we'll help, usually within a few days. We don't sell personal information.</p>
+
+  <h2>12. Security</h2>
+  <p>Data is sent over encrypted connections. Our database rules block listing groups or markets, reject malformed data, and stop anyone from editing a market's question, creator, or result after the fact.</p>
+
+  <h2>13. Changes to This Policy</h2>
+  <p>If we change how Fifty handles information, we'll update this page and the effective date above.</p>
+
+  <h2>14. Contact Us</h2>
+  <p><strong>Email:</strong> <a href="mailto:andrewgmaxwell123@gmail.com">andrewgmaxwell123@gmail.com</a><br>
+  <strong>Developer:</strong> Andrew Maxwell</p>
+</div>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <div class="footer-grid">
+        <div class="footer-about">
+          <a class="brand" href="index.html"><span class="brand-mark" aria-hidden="true"><span></span><span></span><span></span></span>TimeStamp Games</a>
+          <p>Party games for iPhone, made to play together.</p>
+        </div>
+        <div>
+          <h2>Games</h2>
+          <ul>
+            <li><a href="index.html#timestamp">TimeStamp!</a></li>
+            <li><a href="index.html#draftable">Draftable</a></li>
+            <li><a href="index.html#hi-stranger">Hi Stranger</a></li>
+            <li><a href="index.html#fifty">Fifty</a></li>
+          </ul>
+        </div>
+        <div>
+          <h2>Help</h2>
+          <ul>
+            <li><a href="support.html">Support</a></li>
+            <li><a href="data-deletion.html">Data deletion</a></li>
+            <li><a href="mailto:andrewgmaxwell123@gmail.com">Contact</a></li>
+          </ul>
+        </div>
+        <div>
+          <h2>Legal</h2>
+          <ul>
+            <li><a href="privacy-timestamp.html">TimeStamp! privacy</a></li>
+            <li><a href="privacy-draftable.html">Draftable privacy</a></li>
+            <li><a href="privacy-hi-stranger.html">Hi Stranger privacy</a></li>
+            <li><a href="privacy-fifty.html">Fifty privacy</a></li>
+            <li><a href="site-privacy.html">Website privacy</a></li>
+            <li><a href="terms.html">Terms of use</a></li>
+            <li><a href="accessibility.html">Accessibility</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-legal">
+        <p>© 2026 Andrew Maxwell. All rights reserved.</p>
+        <p>This website does not use cookies, analytics, advertising, or third-party trackers.</p>
+        <p>Apple, iPhone, and App Store are trademarks of Apple Inc., registered in the U.S. and other countries. TimeStamp Games is not affiliated with or endorsed by Apple Inc.</p>
+      </div>
+    </div>
+  </footer>
+
+
+</body>
+</html>
