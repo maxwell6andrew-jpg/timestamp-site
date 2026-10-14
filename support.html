@@ -12,6 +12,7 @@
       --dr: #7c3aed; --dr-light: rgba(124,58,237,0.08); --dr-border: rgba(124,58,237,0.22);
       --ts: #f97316; --ts-light: rgba(249,115,22,0.08); --ts-border: rgba(249,115,22,0.22);
       --ff: #00995a;
+      --nt: #d9482b;
     }
     html { scroll-behavior: smooth; }
     body { background: var(--bg); color: var(--ink); font-family: var(--body); line-height: 1.6; overflow-x: hidden; }
@@ -54,6 +55,7 @@
     .tab-btn.active-dr { color: var(--dr); border-bottom-color: var(--dr); }
     .tab-btn.active-ts { color: var(--ts); border-bottom-color: var(--ts); }
     .tab-btn.active-ff { color: var(--ff); border-bottom-color: var(--ff); }
+    .tab-btn.active-nt { color: var(--nt); border-bottom-color: var(--nt); }
     .tab-dot { width: 7px; height: 7px; border-radius: 50%; }
 
     /* LAYOUT */
@@ -154,7 +156,7 @@
           <div class="menu">
             <a href="privacy-timestamp.html">TimeStamp! privacy</a>
             <a href="privacy-draftable.html">Draftable privacy</a>
-            <a href="privacy-hi-stranger.html">Hi Stranger privacy</a>
+            <a href="privacy-nametags.html">Nametags privacy</a>
             <a href="privacy-fifty.html">Fifty privacy</a>
             <a href="site-privacy.html">Website privacy</a>
             <a href="terms.html">Terms of use</a>
@@ -183,6 +185,9 @@
   </button>
   <button class="tab-btn" onclick="switchTab('fifty', this)">
     <span class="tab-dot" style="background:var(--ff);"></span> Fifty
+  </button>
+  <button class="tab-btn" id="tab-nametags" onclick="switchTab('nametags', this)">
+    <span class="tab-dot" style="background:var(--nt);"></span> Nametags
   </button>
 </div>
 
@@ -491,6 +496,87 @@
 
     </div>
 
+    <!-- NAMETAGS PANEL -->
+    <div class="tab-panel" id="panel-nametags">
+
+      <div class="faq-section" id="nt-basics">
+        <h2 class="section-heading">Getting Started</h2>
+        <div class="accordion">
+          <div class="accordion-item">
+            <button class="accordion-trigger"><span>What is Nametags?</span><div class="acc-icon">+</div></button>
+            <div class="accordion-body">Nametags is a party game for a group of friends on a night out. Everyone gets secret quests that get you talking to new people, like getting someone to give you a nickname or finding someone who shares your birthday. Claim a quest, log the first name of the person you met, and race your crew for points until last call.</div>
+          </div>
+          <div class="accordion-item">
+            <button class="accordion-trigger"><span>How do friends join?</span><div class="acc-icon">+</div></button>
+            <div class="accordion-body">One person taps Start a Crew. Everyone nearby taps Join. There are no codes and no accounts. You can also send an invite link from the lobby.</div>
+          </div>
+          <div class="accordion-item">
+            <button class="accordion-trigger"><span>Who can play?</span><div class="acc-icon">+</div></button>
+            <div class="accordion-body">Players must be 18 or older and of legal drinking age where they play. Nothing in the game requires alcohol: any quest that mentions a drink counts with any drink, including water.</div>
+          </div>
+          <div class="accordion-item">
+            <button class="accordion-trigger"><span>Is it free?</span><div class="acc-icon">+</div></button>
+            <div class="accordion-body">Yes. Free crews have up to 6 players and play in San Francisco, Los Angeles, New York or Anywhere.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-section" id="nt-play">
+        <h2 class="section-heading">Playing</h2>
+        <div class="accordion">
+          <div class="accordion-item">
+            <button class="accordion-trigger"><span>How do I claim a quest?</span><div class="acc-icon">+</div></button>
+            <div class="accordion-body">Press and hold the ticket, then write the first name of the person who helped you. The people you meet never touch your phone.</div>
+          </div>
+          <div class="accordion-item">
+            <button class="accordion-trigger"><span>What does calling BS do?</span><div class="acc-icon">+</div></button>
+            <div class="accordion-body">If you don't believe a friend's claim, tap BS on it. If more than half of the rest of the crew agrees, the claim comes off the tab. In Crew vs. Crew, one of their own teammates has to agree too.</div>
+          </div>
+          <div class="accordion-item">
+            <button class="accordion-trigger"><span>What is the Bouncer?</span><div class="acc-icon">+</div></button>
+            <div class="accordion-body">A friend who isn't playing (the designated driver, say) can be the Bouncer. They don't get quests. They have the final say on every claim.</div>
+          </div>
+          <div class="accordion-item">
+            <button class="accordion-trigger"><span>Someone made me uncomfortable. What should I do?</span><div class="acc-icon">+</div></button>
+            <div class="accordion-body">Walk away and tell the staff at the venue. Every quest is optional, and if someone isn't into it, the right move is to say thanks and move on. To report a player or a problem in the app, open the top-right menu in a game and tap Report a problem, or email us.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-section" id="nt-pro">
+        <h2 class="section-heading">Nametags Pro</h2>
+        <div class="accordion">
+          <div class="accordion-item">
+            <button class="accordion-trigger"><span>What does Pro unlock?</span><div class="acc-icon">+</div></button>
+            <div class="accordion-body">Crews up to 12, Crew vs. Crew, Bar Crawl mode, occasion packs, writing your own quests, season standings, custom name tag colors, and 7 more cities. One person with Pro unlocks it for the whole crew that night.</div>
+          </div>
+          <div class="accordion-item">
+            <button class="accordion-trigger"><span>How much is it?</span><div class="acc-icon">+</div></button>
+            <div class="accordion-body">$4.99 a month, $29.99 a year, or a $0.99 Day Pass for one crew for one night (it doesn't renew). Prices are in USD and may vary by country.</div>
+          </div>
+          <div class="accordion-item">
+            <button class="accordion-trigger"><span>How do I cancel?</span><div class="acc-icon">+</div></button>
+            <div class="accordion-body">Open Settings › your name › Subscriptions on your iPhone and cancel Nametags Pro. You keep Pro until the end of the period you paid for.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-section" id="nt-data">
+        <h2 class="section-heading">Account &amp; Data</h2>
+        <div class="accordion">
+          <div class="accordion-item">
+            <button class="accordion-trigger"><span>What happens to my game data?</span><div class="acc-icon">+</div></button>
+            <div class="accordion-body">Crew names, first names, notes and optional photo proof are shared only with your crew. Each game is deleted from our servers after it's been inactive for 36 hours.</div>
+          </div>
+          <div class="accordion-item">
+            <button class="accordion-trigger"><span>Where is the privacy policy?</span><div class="acc-icon">+</div></button>
+            <div class="accordion-body"><a href="privacy-nametags.html" style="color:var(--nt);text-decoration:underline;">Nametags Privacy Policy</a> and <a href="terms.html#nametags" style="color:var(--nt);text-decoration:underline;">Terms (Section 5c)</a>.</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
     <!-- CONTACT -->
     <div class="contact-section">
       <h2>Still need help?</h2>
@@ -518,7 +604,7 @@
           <ul>
             <li><a href="index.html#timestamp">TimeStamp!</a></li>
             <li><a href="index.html#draftable">Draftable</a></li>
-            <li><a href="index.html#hi-stranger">Hi Stranger</a></li>
+            <li><a href="index.html#nametags">Nametags</a></li>
             <li><a href="index.html#fifty">Fifty</a></li>
           </ul>
         </div>
@@ -535,7 +621,7 @@
           <ul>
             <li><a href="privacy-timestamp.html">TimeStamp! privacy</a></li>
             <li><a href="privacy-draftable.html">Draftable privacy</a></li>
-            <li><a href="privacy-hi-stranger.html">Hi Stranger privacy</a></li>
+            <li><a href="privacy-nametags.html">Nametags privacy</a></li>
             <li><a href="privacy-fifty.html">Fifty privacy</a></li>
             <li><a href="site-privacy.html">Website privacy</a></li>
             <li><a href="terms.html">Terms of use</a></li>
@@ -556,7 +642,7 @@
   function switchTab(game, btn) {
     document.querySelectorAll('.tab-btn').forEach(b => b.className = 'tab-btn');
     document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
-    btn.classList.add(game === 'draftable' ? 'active-dr' : game === 'fifty' ? 'active-ff' : 'active-ts');
+    btn.classList.add(game === 'draftable' ? 'active-dr' : game === 'fifty' ? 'active-ff' : game === 'nametags' ? 'active-nt' : 'active-ts');
     document.getElementById('panel-' + game).classList.add('active');
     buildSidebar(game);
   }
@@ -571,6 +657,12 @@
   });
 
   const sidebarSections = {
+    nametags: [
+      { id: 'nt-basics', label: 'Getting Started' },
+      { id: 'nt-play',   label: 'Playing' },
+      { id: 'nt-pro',    label: 'Nametags Pro' },
+      { id: 'nt-data',   label: 'Account & Data' },
+    ],
     fifty: [
       { id: 'ff-money',   label: 'Play Money' },
       { id: 'ff-groups',  label: 'Groups & Invites' },
@@ -611,6 +703,8 @@
   }
 
   buildSidebar('draftable');
+  // support.html#nametags opens that game's tab (the App Store support link points here).
+  if (location.hash === '#nametags') switchTab('nametags', document.getElementById('tab-nametags'));
 </script>
 </body>
 </html>
